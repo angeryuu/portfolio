@@ -1,5 +1,5 @@
-import { useEffect, useMemo, useRef } from 'react';
-import { useFrame } from '@react-three/fiber';
+import { useEffect, useMemo, useState, useRef } from 'react';
+import { useFrame, useLoader } from '@react-three/fiber';
 import CustomShaderMaterial from 'three-custom-shader-material'
 import vertexShader from '../shaders/wobble/vertex.glsl'
 import fragmentShader from '../shaders/wobble/fragment.glsl'
@@ -7,143 +7,125 @@ import { useControls } from 'leva'
 import { mergeVertices } from 'three/addons/utils/BufferGeometryUtils.js'
 import * as THREE from 'three'
 import { metalness, thickness } from 'three/src/nodes/core/PropertyNode.js';
+import { createControlsSchema } from './controls';
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
+import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js'
+
 
 export default function Bubble () {
 
-    const debugObject = {}
-    debugObject.colorA = '#006eff'
-    debugObject.colorB = '#002f61'
+    const [positions, setPositions] = useState([])
+    const [bufferAttributes, setBufferAttributes] = useState(null)
+    const [maxCount, setMaxCount] = useState(0)
+    // const [geometry, setGeometry] = useState(() => {
+    //     let geom = new THREE.IcosahedronGeometry(2.5, 50)
+    //     geom = mergeVertices(geom)
+    //     geom.computeTangents()
+    //     return geom
+    // })
 
-    const materialRef = useRef()
+    /**
+     * Load models
+     */
+    const models = useLoader(GLTFLoader, 'models.glb', (loader) => {
+        const dracoLoader = new DRACOLoader()
+        dracoLoader.setDecoderPath('./draco/')
+        loader.setDRACOLoader(dracoLoader)
+    })
 
 
-    function hexToNormalisedArray(hex) {
-                var r = parseInt(hex.slice(1, 3), 16) / 256,
-                    g = parseInt(hex.slice(3, 5), 16) / 256,
-                    b = parseInt(hex.slice(5, 7), 16) / 256
-
-                return [r, g, b]
-            }
-    const controls = useControls(
-        { uPositionFrequency: 
-            {
-                value: 0.382,
-                min: 0,
-                max: 2,
-                onChange: (v) => {
-                    materialRef.current.uniforms.uPositionFrequency.value = v
-                } 
-            },
-            uTimeFrequency: 
-            {
-                value: 0.788,
-                min: 0,
-                max: 2,
-                onChange: (v) => {
-                    materialRef.current.uniforms.uTimeFrequency.value = v
-                } 
-            },
-            uStrength: 
-            {
-                value: 0.4,
-                min: 0,
-                max: 2,
-                onChange: (v) => {
-                    materialRef.current.uniforms.uStrength.value = v
-                } 
-            },
-
-            uWarpPositionFrequency: 
-            {
-                value: 0.2,
-                min: 0,
-                max: 2,
-                onChange: (v) => {
-                    materialRef.current.uniforms.uWarpPositionFrequency.value = v
-                } 
-            },
-            uWarpTimeFrequency: 
-            {
-                value: 0.7,
-                min: 0,
-                max: 2,
-                onChange: (v) => {
-                    materialRef.current.uniforms.uWarpTimeFrequency.value = v
-                } 
-            },
-            uWarpStrength: 
-            {
-                value: 0.5,
-                min: 0,
-                max: 2,
-                onChange: (v) => {
-                    materialRef.current.uniforms.uWarpStrength.value = v
-                } 
-            },
-            uColorA: 
-            {
-                value: "#09c0da",
-                onChange: (v) => {
-                    materialRef.current.uniforms.uColorA.value = hexToNormalisedArray(v)
-                } 
-            },
-            uColorB: 
-            {
-                value: "#284bd7",
-                onChange: (v) => {
-                    materialRef.current.uniforms.uColorB.value = hexToNormalisedArray(v)
-                } 
-            },
-            roughness: 
-            {
-                value: 0,
-                min: 0,
-                max: 1,
-                onChange: (v) => {
-                    materialRef.current.roughness = v
-                } 
-            },
-            metalness: 
-            {
-                value: 0,
-                min: 0,
-                max: 1,
-                onChange: (v) => {
-                    materialRef.current.metalness = v
-                } 
-            },
-            thickness: 
-            {
-                value: 0.4,
-                min: 0,
-                max: 1,
-                onChange: (v) => {
-                    materialRef.current.thickness = v
-                } 
-            },
-            
-            transmission: 
-            {
-                value: 0.9,
-                min: 0,
-                max: 1,
-                onChange: (v) => {
-                    materialRef.current.transmission = v
-                }
-            },
-            ior: 
-            {
-                value: 1.3,
-                min: 1,
-                max: 2.42,
-                onChange: (v) => {
-                    materialRef.current.ior = v
-                } 
-            }
-        }
-    )
     
 
+    /**
+     * Loads basic geometry
+     */
+    const geometry = useMemo(() => {
+        console.log(models)
+        const mesh = models.scene.children[1]
+        let geom = mesh.geometry.clone()
+
+        geom = mergeVertices(geom)
+        geom.computeTangents()
+        return geom
+    }, [models])
+
+    // useEffect(() => {
+    //     return () => geometry.dispose()
+    // }, [geometry])
+
+    
+    /**
+     * Stores the attributes position array and creates buffer attributes for each model
+     */
+    useEffect(() => {
+        const pos = models.scene.children.map(child => child.geometry.attributes.position)
+
+        // for(const p of pos){
+        //     if(p.count > maxCount)
+        //         setMaxCount(p.count)
+        // }
+
+     }, [models])
+
+    // useEffect(() => {
+    //     const bufferArray = []
+        
+    //     for(const p of positions){
+
+    //         const originalArray = p.array
+    //         const newArray = new Float32Array(maxCount * 3)
+        
+    //         for(let i = 0; i < maxCount; i++){
+    //             const i3 = i * 3;
+                
+    //             if(i3 < originalArray.length) {
+    //                 newArray[i3 + 0] = originalArray[i3 + 0]
+    //                 newArray[i3 + 1] = originalArray[i3 + 1]
+    //                 newArray[i3 + 2] = originalArray[i3 + 2]
+    //             }else{
+    //                 const randomIndex = Math.floor(p.count * Math.random()) * 3
+    //                 newArray[i3 + 0] = originalArray[randomIndex + 0];
+    //                 newArray[i3 + 1] = originalArray[randomIndex + 1];
+    //                 newArray[i3 + 2] = originalArray[randomIndex + 2];
+    //             }
+    //         }
+
+    //         bufferArray.push(new THREE.Float32BufferAttribute(newArray, 3))
+    //     }
+
+    //     setBufferAttributes(bufferArray)
+    // }, [maxCount])
+
+    // useEffect(() => {
+    //     if (!bufferAttributes) return
+
+    //     const newGeometry = new THREE.BufferGeometry()
+
+        
+    //     newGeometry.setAttribute('position', bufferAttributes[2])
+    //     newGeometry.setAttribute('normal', geometry.attributes.normal)
+    //     newGeometry.setAttribute('uv', geometry.attributes.uv)
+    //     newGeometry.setAttribute('tangent', geometry.attributes.tangent)
+    //     // newGeometry = mergeVertices(newGeometry)
+    //     newGeometry.computeVertexNormals()
+    //     newGeometry.computeTangents()
+    //     newGeometry.setIndex(null)
+
+    //     setGeometry(newGeometry)
+
+    // }, [bufferAttributes])
+    
+    /**
+     * Material ref and controls
+     */
+    const materialRef = useRef()
+    const controls = useControls(
+        createControlsSchema(materialRef)
+    )
+
+    /**
+     * Uniforms
+     */
     const uniforms = useMemo(
             () => ({
             uTime: new THREE.Uniform(0),
@@ -155,17 +137,12 @@ export default function Bubble () {
             uWarpTimeFrequency: new THREE.Uniform(0.723),
             uWarpStrength: new THREE.Uniform(0.561),
 
-            uColorA: new THREE.Uniform(new THREE.Color(debugObject.colorA)),
-            uColorB: new THREE.Uniform(new THREE.Color(debugObject.colorB))
+            uColorA: new THREE.Uniform(new THREE.Color("#09c0da")),
+            uColorB: new THREE.Uniform(new THREE.Color("#284bd7"))
         }), []
     );
 
-    // Geometry
-    let geometry = new THREE.IcosahedronGeometry(2.5, 50)
-    geometry = mergeVertices(geometry)
-    geometry.computeTangents()
-
-
+    
     useFrame((state) => {
         if (materialRef.current) {
             const { clock } = state;
@@ -192,6 +169,7 @@ export default function Bubble () {
                     transmission={controls.transmission}
                     thickness= {controls.thickness}
                     transparent= {true}
+                    // side={THREE.DoubleSide}
                     wireframe= {false}
                     depthWrite={false}
                 />
