@@ -37,7 +37,7 @@ void main(){
     vec3 normals = normalize(vNor);
     float colorMix = smoothstep(- 1.0, 1.0, vWobble);
     vec3 baseColor = mix(uColorA, uColorB, colorMix);
-    // baseColor = boostSaturation(baseColor, 1.4) * 4.4;
+    baseColor = boostSaturation(baseColor, 1.4) * 5.0;
 
     if(!gl_FrontFacing)
         normals *= - 1.0;
@@ -51,4 +51,9 @@ void main(){
     csm_DiffuseColor.rgb = baseColor;
 
     csm_DiffuseColor.a = fresnel;
+
+    // Option B
+    // csm_DiffuseColor.a = 1.0; // constante, deja que transmission haga su trabajo
+
+    // csm_Emissive += baseColor * fresnel * 0.2;
 }

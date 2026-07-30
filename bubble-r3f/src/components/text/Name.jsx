@@ -17,13 +17,22 @@ export default function Name(){
                 material={material} 
                 >Just texting hehehhehe</Text3D>
             </Center> */}
-            <Center >
                 <Text
-                position-z={-17}
-                size={1}
-                material={material}
-                >Just texting hehehhehe</Text>
-            </Center>
+                position={[0, 10, -40]}
+                scale={15}
+                font='./fonts/Satoshi-Variable.ttf'
+                material-depthWrite={true}
+                material-transparent={false}
+                >Ángel C. Martos</Text>
+                <Text
+                position={[0, -10, -40]}
+                scale={6}
+                fontWeight="Light"
+                font='./fonts/Satoshi-Light.ttf'
+                material-depthWrite={true}
+                material-transparent={false}
+                >Programmer & 3D Artist</Text>
+            
         </>
     )
 }

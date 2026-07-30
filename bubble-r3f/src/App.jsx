@@ -7,15 +7,15 @@ function App() {
 
   return (
       <>
-        {/* <color args={['#242424']} attach="background"/> */}
-        <OrbitControls makeDefault/>
+        <color args={['#202033']} attach="background"/>
+        {/* <OrbitControls makeDefault/> */}
 
         <directionalLight position={[1, 2, 3]} intensity={1.5}/>
         <ambientLight intensity={0.5}/>
 
         
         <Bubble/>
-        {/* <Name/> */}
+        <Name/>
       </>
   )
 }

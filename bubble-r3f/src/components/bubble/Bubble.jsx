@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState, useRef } from 'react';
 import { useFrame, useLoader, useThree } from '@react-three/fiber';
-import { useFBO } from '@react-three/drei'
+import { MeshTransmissionMaterial, Text, useFBO } from '@react-three/drei'
 import { useControls } from 'leva'
 import { mergeVertices } from 'three/addons/utils/BufferGeometryUtils.js'
 import CustomShaderMaterial from 'three-custom-shader-material'
@@ -17,6 +17,7 @@ import { useBubbleStore } from '../../stores/bubbleStore'
 
 import gsap from 'gsap'
 import * as THREE from 'three'
+import { thickness } from 'three/src/nodes/TSL.js';
 
 export default function Bubble () {
 
@@ -42,7 +43,6 @@ export default function Bubble () {
         createControlsSchema(materialRef, scene, camera, gl, fbo)
     )
 
-    
     /**
      * Load models
      */
@@ -68,6 +68,7 @@ export default function Bubble () {
      */
     const meshes = useMemo(() => {
         return models.scene.children.filter(child => child.isMesh)
+        
     }, [models])
 
     /**
@@ -156,8 +157,11 @@ export default function Bubble () {
     })
 
     return( 
-    <>
-            <mesh geometry={geometry} ref={meshRef}  >
+    <>      
+            
+            <mesh geometry={geometry} ref={meshRef}>
+                
+                
                 <CustomShaderMaterial
                     ref={materialRef}
                     baseMaterial={THREE.MeshPhysicalMaterial}

@@ -8,7 +8,10 @@ export function Header(){
         <>
             <header>
                 <nav>
-                    <li onMouseEnter={() => setTargetIndex(1)} onMouseLeave={() => setTargetIndex(0)}>
+                    {/* <li onMouseEnter={() => setTargetIndex(1)} onMouseLeave={() => setTargetIndex(0)}>
+                        About me
+                    </li> */}
+                    <li>
                         About me
                     </li>
                     <li>
