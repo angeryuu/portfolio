@@ -1,8 +1,8 @@
 import { useEffect, useMemo, useState, useRef } from 'react';
 import { useFrame, useLoader } from '@react-three/fiber';
 import CustomShaderMaterial from 'three-custom-shader-material'
-import vertexShader from '../shaders/wobble/vertex.glsl'
-import fragmentShader from '../shaders/wobble/fragment.glsl'
+import vertexShader from '../../shaders/bubble/vertex.glsl'
+import fragmentShader from '../../shaders/bubble/fragment.glsl'
 import { useControls } from 'leva'
 import { mergeVertices } from 'three/addons/utils/BufferGeometryUtils.js'
 import * as THREE from 'three'
@@ -10,24 +10,27 @@ import { metalness, thickness } from 'three/src/nodes/core/PropertyNode.js';
 import { createControlsSchema } from './controls';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
 import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js'
+import { useBubbleStore } from '../../stores/bubbleStore'
+import gsap from 'gsap'
 
 
 export default function Bubble () {
 
     
-    const [currentIndex, setCurrentIndex] = useState(1)
-    const [scale, setScale] = useState(1)
-    const [phase, setPhase] = useState('idle') // 'idle' | 'shrinking' | 'growing'
+    // const [currentIndex, setCurrentIndex] = useState(1)
+    const targetIndex = useBubbleStore((state) => state.targetIndex)
+    const [currentIndex, setCurrentIndex] = useState(targetIndex)
+
+    const isAnimatingRef = useRef(false)
+    const meshRef = useRef()
     const materialRef = useRef()
+    const scaleRef = useRef(1)
+    const phaseRef = useRef('idle')
+    const pendingIndexRef = useRef(null)
     const controls = useControls(
         createControlsSchema(materialRef)
     )
-    // const [geometry, setGeometry] = useState(() => {
-    //     let geom = new THREE.IcosahedronGeometry(2.5, 50)
-    //     geom = mergeVertices(geom)
-    //     geom.computeTangents()
-    //     return geom
-    // })
+
 
     /**
      * Load models
@@ -38,6 +41,10 @@ export default function Bubble () {
         loader.setDRACOLoader(dracoLoader)
     })
 
+
+    /**
+     * Everytime model changes, material needs to be updated
+     */
     useEffect(() => {
     if (materialRef.current) {
         materialRef.current.needsUpdate = true
@@ -45,7 +52,9 @@ export default function Bubble () {
     }, [currentIndex])
 
 
-    // Extraemos todos los meshes de la escena, una sola vez
+    /**
+     * Extract 
+     */
     const meshes = useMemo(() => {
         return models.scene.children.filter(child => child.isMesh)
     }, [models])
@@ -54,23 +63,50 @@ export default function Bubble () {
      * Loads basic geometry
      */
     const geometry = useMemo(() => {
-        console.log('🔄 recalculando geometry con index:', currentIndex)
-        const mesh = meshes[currentIndex]
+        const mesh = meshes[targetIndex]
         let geom = mesh.geometry.clone()
         geom = mergeVertices(geom)
         geom.computeTangents()
-        geom.computeBoundingSphere() // 👈 añade esto
+        geom.computeBoundingSphere()
         return geom
     }, [models, currentIndex])
 
-    // Cambia de modelo cada X segundos
-    useEffect(() => {
-        const interval = setInterval(() => {
-            setPhase('shrinking')
-        }, 4000) // cada 4s inicia el cambio
 
-        return () => clearInterval(interval)
-    }, [])
+    /**
+     * Reacts when the index changes because of mouse over
+     */
+    // Reacciona a cambios del store, disparando la animación con GSAP
+    useEffect(() => {
+        if (targetIndex === currentIndex) return
+
+        pendingIndexRef.current = targetIndex
+
+        if (isAnimatingRef.current) return // ya hay una animación en curso, solo actualiza el índice pendiente
+
+        isAnimatingRef.current = true
+
+        gsap.to(meshRef.current.scale, {
+            x: 0, y: 0, z: 0,
+            duration: 0.25,        // 👈 más rápido que el lerp anterior
+            ease: 'power2.in',
+            onComplete: () => {
+                setCurrentIndex(pendingIndexRef.current)
+
+                gsap.to(meshRef.current.scale, {
+                    x: 1, y: 1, z: 1,
+                    duration: 0.25,
+                    ease: 'power2.out',
+                    onComplete: () => {
+                        isAnimatingRef.current = false
+                        // Si mientras crecía llegó un nuevo target distinto, re-dispara
+                        if (pendingIndexRef.current !== targetIndexRef.current) {
+                            // ver nota más abajo sobre esto
+                        }
+                    }
+                })
+            }
+        })
+    }, [targetIndex])
 
 
     /**
@@ -98,41 +134,11 @@ export default function Bubble () {
             const { clock } = state;
             materialRef.current.uniforms.uTime.value = clock.getElapsedTime();
         }
-
-        // if (phase === 'shrinking') {
-        //     console.log("shrinking")
-        //     setScale((s) => {
-        //         const next = THREE.MathUtils.lerp(s, 0, delta * 4)
-        //         if (next < 0.01) {
-        //             console.log('🔵 llegó a 0, cambiando index')
-        //             setCurrentIndex((i) => {
-        //                 const newIndex = (i + 1) % meshes.length
-        //                 return newIndex
-        //             })
-        //             setPhase('growing')
-        //             return 0
-        //         }
-        //         return next
-        //     })
-        // }
-
-        // if (phase === 'growing') {
-        //     console.log("growing")
-        //     setScale((s) => {
-        //         const next = THREE.MathUtils.lerp(s, 1, delta * 4)
-        //         if (next > 0.99) {
-        //             console.log('🟢 llegó a 1, phase idle')
-        //             setPhase('idle')
-        //             return 1
-        //         }
-        //         return next
-        //     })
-        // }
     })
 
     return( 
     <>
-            <mesh geometry={geometry} scale={scale} >
+            <mesh geometry={geometry} ref={meshRef}  >
                 <CustomShaderMaterial
                     ref={materialRef}
                     baseMaterial={THREE.MeshPhysicalMaterial}

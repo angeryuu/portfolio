@@ -1,9 +1,7 @@
 import { OrbitControls } from '@react-three/drei'
 import './App.css'
-
-
-import Bubble from './bubble/Bubble';
-import Name from './text/Name';
+import Bubble from './components/bubble/Bubble';
+import Name from './components/text/Name';
 
 function App() {
 
