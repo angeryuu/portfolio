@@ -14,7 +14,8 @@ uniform float uWarpTimeFrequency;
 uniform float uWarpStrength;
 
 varying float vWobble;
-
+varying vec3 vNor;
+varying vec3 vPosition;
 
 float getWobble(vec3 position){
 
@@ -51,4 +52,8 @@ void main() {
 
     // Varying
     vWobble = wobble / uStrength;
+
+
+    vNor = normalize(normalMatrix * csm_Normal);
+    vPosition = (modelMatrix * vec4(csm_Position, 1.0)).xyz;
 }

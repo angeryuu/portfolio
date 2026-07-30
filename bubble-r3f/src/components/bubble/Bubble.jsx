@@ -1,22 +1,30 @@
 import { useEffect, useMemo, useState, useRef } from 'react';
-import { useFrame, useLoader } from '@react-three/fiber';
-import CustomShaderMaterial from 'three-custom-shader-material'
-import vertexShader from '../../shaders/bubble/vertex.glsl'
-import fragmentShader from '../../shaders/bubble/fragment.glsl'
+import { useFrame, useLoader, useThree } from '@react-three/fiber';
+import { useFBO } from '@react-three/drei'
 import { useControls } from 'leva'
 import { mergeVertices } from 'three/addons/utils/BufferGeometryUtils.js'
-import * as THREE from 'three'
-import { metalness, thickness } from 'three/src/nodes/core/PropertyNode.js';
-import { createControlsSchema } from './controls';
+import CustomShaderMaterial from 'three-custom-shader-material'
+
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
 import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js'
-import { useBubbleStore } from '../../stores/bubbleStore'
-import gsap from 'gsap'
 
+import vertexShader from '../../shaders/bubble/vertex.glsl'
+import fragmentShader from '../../shaders/bubble/fragment.glsl'
+
+import { createControlsSchema } from './controls';
+import { useBubbleStore } from '../../stores/bubbleStore'
+
+
+import gsap from 'gsap'
+import * as THREE from 'three'
 
 export default function Bubble () {
 
-    
+    const { scene, camera, gl } = useThree()
+    const fbo = useFBO(4096, 2048, {
+        type: THREE.UnsignedByteType
+    })
+
     // const [currentIndex, setCurrentIndex] = useState(1)
     const targetIndex = useBubbleStore((state) => state.targetIndex)
     const [currentIndex, setCurrentIndex] = useState(targetIndex)
@@ -27,11 +35,14 @@ export default function Bubble () {
     const scaleRef = useRef(1)
     const phaseRef = useRef('idle')
     const pendingIndexRef = useRef(null)
+
+
+
     const controls = useControls(
-        createControlsSchema(materialRef)
+        createControlsSchema(materialRef, scene, camera, gl, fbo)
     )
 
-
+    
     /**
      * Load models
      */
@@ -81,13 +92,13 @@ export default function Bubble () {
 
         pendingIndexRef.current = targetIndex
 
-        if (isAnimatingRef.current) return // ya hay una animación en curso, solo actualiza el índice pendiente
+        if (isAnimatingRef.current) return 
 
         isAnimatingRef.current = true
 
         gsap.to(meshRef.current.scale, {
             x: 0, y: 0, z: 0,
-            duration: 0.25,        // 👈 más rápido que el lerp anterior
+            duration: 0.25,        
             ease: 'power2.in',
             onComplete: () => {
                 setCurrentIndex(pendingIndexRef.current)
@@ -98,10 +109,10 @@ export default function Bubble () {
                     ease: 'power2.out',
                     onComplete: () => {
                         isAnimatingRef.current = false
-                        // Si mientras crecía llegó un nuevo target distinto, re-dispara
-                        if (pendingIndexRef.current !== targetIndexRef.current) {
-                            // ver nota más abajo sobre esto
-                        }
+                        
+                        // if (pendingIndexRef.current !== targetIndexRef.current) {
+                           
+                        // }
                     }
                 })
             }
@@ -123,6 +134,8 @@ export default function Bubble () {
             uWarpTimeFrequency: new THREE.Uniform(0.723),
             uWarpStrength: new THREE.Uniform(0.561),
 
+            fresnelIntensity: new THREE.Uniform(1.0),
+
             uColorA: new THREE.Uniform(new THREE.Color("#09c0da")),
             uColorB: new THREE.Uniform(new THREE.Color("#284bd7"))
         }), []
@@ -134,6 +147,12 @@ export default function Bubble () {
             const { clock } = state;
             materialRef.current.uniforms.uTime.value = clock.getElapsedTime();
         }
+
+        if(meshRef.current){
+            meshRef.current.rotation.y += delta * 0.3;
+            meshRef.current.rotation.z += delta * 0.5;
+        }
+        
     })
 
     return( 

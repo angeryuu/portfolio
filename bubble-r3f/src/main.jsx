@@ -8,7 +8,7 @@ import { Header } from './components/header/Header.jsx'
 createRoot(document.getElementById('root')).render(
   
     <div id="canvas-container">
-      <Header/>
+      {/* <Header/> */}
       <Canvas>
             <App />
       </Canvas>

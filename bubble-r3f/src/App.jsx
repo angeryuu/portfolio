@@ -10,12 +10,12 @@ function App() {
         {/* <color args={['#242424']} attach="background"/> */}
         <OrbitControls makeDefault/>
 
-        <directionalLight position={[1, 2, 3]} intensity={5.5}/>
-        <ambientLight intensity={9.5}/>
+        <directionalLight position={[1, 2, 3]} intensity={1.5}/>
+        <ambientLight intensity={0.5}/>
 
         
         <Bubble/>
-        <Name/>
+        {/* <Name/> */}
       </>
   )
 }
