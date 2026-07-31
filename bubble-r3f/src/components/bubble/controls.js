@@ -68,7 +68,7 @@ export const createControlsSchema = (materialRef, scene, camera, gl, fbo) => ({
         }),
     uPositionFrequency: 
     {
-        value: 0.10,
+        value: 0.06,
         min: 0,
         max: 2,
         onChange: (v) => {
@@ -77,7 +77,7 @@ export const createControlsSchema = (materialRef, scene, camera, gl, fbo) => ({
     },
     uTimeFrequency: 
     {
-        value: 0.788,
+        value: 0.8,
         min: 0,
         max: 2,
         onChange: (v) => {
@@ -86,9 +86,9 @@ export const createControlsSchema = (materialRef, scene, camera, gl, fbo) => ({
     },
     uStrength: 
     {
-        value: 1.4,
+        value: 2.4,
         min: 0,
-        max: 2,
+        max: 10,
         onChange: (v) => {
             materialRef.current.uniforms.uStrength.value = v
         } 
@@ -123,21 +123,21 @@ export const createControlsSchema = (materialRef, scene, camera, gl, fbo) => ({
     },
     uColorA: 
     {
-        value: "#e94c83",
+        value: "#1606ff",
         onChange: (v) => {
             materialRef.current.uniforms.uColorA.value = hexToNormalisedArray(v)
         } 
     },
     uColorB: 
     {
-        value: "#ee9e5c",
+        value: "#378cff",
         onChange: (v) => {
             materialRef.current.uniforms.uColorB.value = hexToNormalisedArray(v)
         } 
     },
     roughness: 
     {
-        value: 0,
+        value: 0.1,
         min: 0,
         max: 1,
         onChange: (v) => {
@@ -155,7 +155,7 @@ export const createControlsSchema = (materialRef, scene, camera, gl, fbo) => ({
     },
     thickness: 
     {
-        value: 0.4,
+        value: 1.0,
         min: 0,
         max: 1,
         onChange: (v) => {
@@ -165,7 +165,7 @@ export const createControlsSchema = (materialRef, scene, camera, gl, fbo) => ({
     
     transmission: 
     {
-        value: 0.9,
+        value: 0.7,
         min: 0,
         max: 1,
         onChange: (v) => {

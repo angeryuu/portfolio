@@ -1,38 +1,28 @@
 import { Center, Text3D, Text, useMatcapTexture } from '@react-three/drei'
 import { useState } from 'react'
+import * as THREE from 'three'
 
 export default function Name(){
 
-    const [matcapTexture] = useMatcapTexture('7E8174_39444D_CECAA7_B3B49B', 256)
-    const [material, setMaterial] = useState()
-
     return (
         <>
-            <meshMatcapMaterial ref={setMaterial} matcap={ matcapTexture } />
-            {/* <Center center>
-                <Text3D 
-                position-z={-18}
-                size={1}
-                font="./fonts/helvetiker_regular.typeface.json" 
-                material={material} 
-                >Just texting hehehhehe</Text3D>
-            </Center> */}
                 <Text
-                position={[0, 10, -40]}
-                scale={15}
-                font='./fonts/Satoshi-Variable.ttf'
+                position={[0, 5, -40]}
+                scale={10}
+                font='./fonts/MonumentExtended-Regular.otf'
                 material-depthWrite={true}
                 material-transparent={false}
-                >Ángel C. Martos</Text>
+                
+                >Testing text</Text>
                 <Text
-                position={[0, -10, -40]}
-                scale={6}
+                position={[0, -5, -40]}
+                color="#6c6b6b"
+                scale={4}
                 fontWeight="Light"
-                font='./fonts/Satoshi-Light.ttf'
+                font='./fonts/Satoshi-LightItalic.ttf'
                 material-depthWrite={true}
                 material-transparent={false}
-                >Programmer & 3D Artist</Text>
-            
+                >Just another text</Text>
         </>
     )
 }

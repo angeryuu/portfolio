@@ -7,7 +7,7 @@ function App() {
 
   return (
       <>
-        <color args={['#202033']} attach="background"/>
+        {/* <color args={['#202033']} attach="background"/> */}
         {/* <OrbitControls makeDefault/> */}
 
         <directionalLight position={[1, 2, 3]} intensity={1.5}/>

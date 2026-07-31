@@ -52,6 +52,19 @@
 
 body {
   margin: 0;
+
+  /* diameter of the circle */
+   --d: 2px; 
+   
+   background : radial-gradient(
+     circle at 
+        var(--d) 
+        var(--d), 
+        
+     #262428   calc(var(--d) - 1px), 
+     #070608  var(--d)
+   ) 
+   0 0 / 50px 50px;
 }
 
 #root {

@@ -159,7 +159,7 @@ export default function Bubble () {
     return( 
     <>      
             
-            <mesh geometry={geometry} ref={meshRef}>
+            <mesh geometry={geometry} ref={meshRef} >
                 
                 
                 <CustomShaderMaterial
@@ -183,9 +183,9 @@ export default function Bubble () {
                     depthWrite={false}
                 />
             </mesh>
-            {/* <mesh position={[0, 0, -5]}>
+            {/* <mesh position={[0, 0, -5]} scale={1.3}>
                 <planeGeometry args={[15, 15, 15]} />
-                <meshBasicMaterial color="tomato"/>
+                <meshBasicMaterial color="blue"/>
             </mesh> */}
     </>)
 }
