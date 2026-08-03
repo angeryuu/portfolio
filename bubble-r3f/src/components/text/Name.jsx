@@ -13,7 +13,7 @@ export default function Name(){
                 material-depthWrite={true}
                 material-transparent={false}
                 
-                >Testing text</Text>
+                >ÁNGEL C. MARTOS</Text>
                 <Text
                 position={[0, -5, -40]}
                 color="#6c6b6b"
@@ -22,7 +22,7 @@ export default function Name(){
                 font='./fonts/Satoshi-LightItalic.ttf'
                 material-depthWrite={true}
                 material-transparent={false}
-                >Just another text</Text>
+                >Creative Developer & 3D Generalist</Text>
         </>
     )
 }

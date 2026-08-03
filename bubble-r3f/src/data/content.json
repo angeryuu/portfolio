@@ -1,0 +1,60 @@
+{
+  "nav": ["Sobre mí", "Experiencia", "Proyectos", "Contacto"],
+  "hero": {
+    "title": "ÁNGEL C. MARTOS",
+    "subtitle": "Creative Developer & 3D Generalist"
+  },
+  "about": {
+    "sectionTitle": "SOBRE MÍ",
+    "paragraphs": "texto no legible con suficiente precisión a esta resolución"
+  },
+  "experience": {
+    "sectionTitle": "EXPERIENCIA",
+    "items": [
+      {
+        "date": "nov. 2024 - abr. 2025",
+        "role": "Full Stack Developer",
+        "company": "OpenNebula Systems",
+        "description": "texto no legible con suficiente precisión a esta resolución"
+      },
+      {
+        "date": "nov. 2024 - abr. 2025",
+        "role": "Full Stack Developer",
+        "company": "OpenNebula Systems",
+        "description": "texto no legible con suficiente precisión a esta resolución"
+      },
+      {
+        "date": "nov. 2024 - abr. 2025",
+        "role": "Full Stack Developer",
+        "company": "OpenNebula Systems",
+        "description": "texto no legible con suficiente precisión a esta resolución"
+      },
+      {
+        "date": "nov. 2024 - abr. 2025",
+        "role": "Full Stack Developer",
+        "company": "OpenNebula Systems",
+        "description": "texto no legible con suficiente precisión a esta resolución"
+      }
+    ]
+  },
+  "projects": {
+    "sectionTitle": "PROYECTOS",
+    "categories": [
+      {
+        "label": "WEB",
+        "items": ["Portfolio", "FoodRadar", "OpenNebula"]
+      },
+      {
+        "label": "3D",
+        "items": ["Chick Bath Environment", "Character"]
+      }
+    ],
+    "tags": ["UI UX", "React", "CSS"],
+    "cta": "Ver más"
+  },
+  "contact": {
+    "sectionTitle": "CONTACTO",
+    "links": ["Linkedin", "CV", "Mail"]
+  },
+  "footer": "© José Ángel Chico Martos. Todos los derechos reservados."
+}
