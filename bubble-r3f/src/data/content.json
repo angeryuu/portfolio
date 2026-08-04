@@ -6,7 +6,7 @@
   },
   "about": {
     "sectionTitle": "SOBRE MÍ",
-    "paragraphs": ""
+    "paragraphs": "Me llamo Ángel y vivo en Madrid.\n\nGrado en Diseño y Desarrollo de Videojuegos (URJC) y 6 años de experiencia en desarrollo frontend.\n\nFormación en 3D ampliando conocimientos con mentorías de Odín Fernández.\n\nBusco proyectos de diseño web o modelado 3D, con un perfil inquieto y polivalente centrado en objetivos.\n\nEsta web está desarrollada por mí con React y Three.js, aprovechando la IA como apoyo con criterio técnico.\n\nHobbies: deportes de circo (aro, straps, pole dance), teatro, videojuegos y arte."
   },
   "experience": {
     "sectionTitle": "EXPERIENCIA",
@@ -15,25 +15,25 @@
         "date": "nov. 2024 - abr. 2025",
         "role": "Full Stack Developer",
         "company": "OpenNebula Systems",
-        "description": "texto no legible con suficiente precisión a esta resolución"
+        "description": "Desarrollador Full Stack integrado en un proyecto Open Source de Cloud Computing, trabajando en el frontend de la interfaz gráfica Sunstone con React. Me encargué de la resolución y debugging de incidencias reportadas por la comunidad sobre flujo de datos y renderización de componentes, además de colaborar en la documentación para usuarios finales y capacitarme en la CLI y arquitectura del sistema."
       },
       {
         "date": "nov. 2024 - abr. 2025",
         "role": "Full Stack Developer",
         "company": "OpenNebula Systems",
-        "description": "texto no legible con suficiente precisión a esta resolución"
+        "description": "Desarrollador Full Stack integrado en un proyecto Open Source de Cloud Computing, trabajando en el frontend de la interfaz gráfica Sunstone con React. Me encargué de la resolución y debugging de incidencias reportadas por la comunidad sobre flujo de datos y renderización de componentes, además de colaborar en la documentación para usuarios finales y capacitarme en la CLI y arquitectura del sistema."
       },
       {
         "date": "nov. 2024 - abr. 2025",
         "role": "Full Stack Developer",
         "company": "OpenNebula Systems",
-        "description": "texto no legible con suficiente precisión a esta resolución"
+        "description": "Desarrollador Full Stack integrado en un proyecto Open Source de Cloud Computing, trabajando en el frontend de la interfaz gráfica Sunstone con React. Me encargué de la resolución y debugging de incidencias reportadas por la comunidad sobre flujo de datos y renderización de componentes, además de colaborar en la documentación para usuarios finales y capacitarme en la CLI y arquitectura del sistema."
       },
       {
         "date": "nov. 2024 - abr. 2025",
         "role": "Full Stack Developer",
         "company": "OpenNebula Systems",
-        "description": "texto no legible con suficiente precisión a esta resolución"
+        "description": "Desarrollador Full Stack integrado en un proyecto Open Source de Cloud Computing, trabajando en el frontend de la interfaz gráfica Sunstone con React. Me encargué de la resolución y debugging de incidencias reportadas por la comunidad sobre flujo de datos y renderización de componentes, además de colaborar en la documentación para usuarios finales y capacitarme en la CLI y arquitectura del sistema."
       }
     ]
   },
@@ -42,11 +42,18 @@
     "categories": [
       {
         "label": "WEB",
-        "items": ["Portfolio", "FoodRadar", "OpenNebula"]
+        "items": [
+          {"label": "Portfolio", "videoSrc": "/videos/Portfolio.webm", "skills": ["React", "ThreeJS", "Tailwind"]},
+          {"label": "Food Radar", "videoSrc": "/videos/Portfolio.webm", "skills": []},
+          {"label": "OpenNebula", "videoSrc": "/videos/Portfolio.webm", "skills": []}
+        ]
       },
       {
         "label": "3D",
-        "items": ["Chick Bath Environment", "Character"]
+        "items": [
+          {"label": "Chick Bath Environment", "videoSrc": "/videos/Chickbath.webm", "skills": ["Blender", "Unreal Engine 5", "Substance Painter", "ZBrush"], "link": "https://www.artstation.com/artwork/qJ15nn"},
+          {"label": "Character", "videoSrc": "/videos/Portfolio.webm", "skills": []}
+        ]
       }
     ],
     "tags": ["UI UX", "React", "CSS"],
@@ -56,5 +63,8 @@
     "sectionTitle": "CONTACTO",
     "links": ["Linkedin", "CV", "Mail"]
   },
-  "footer": "© José Ángel Chico Martos. Todos los derechos reservados."
+  "footer": "© José Ángel Chico Martos. Todos los derechos reservados.",
+  "glossary": {
+    "ver_mas": "Ver más"
+  }
 }

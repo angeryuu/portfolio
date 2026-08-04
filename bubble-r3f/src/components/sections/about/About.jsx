@@ -1,0 +1,17 @@
+import content from '@/data/content.json';
+import meImg from '@/assets/images/me.jpg';
+
+export function About(){
+    return <section>
+        <h2 className='title'>{content.about.sectionTitle}</h2>
+        <div className="flex flex-col md:flex-row gap-10">
+            <div className='w-full md:w-1/2 md:order-1 order-2'>
+                <p className="whitespace-pre-line">{content.about.paragraphs}</p>
+            </div>
+            <div className='w-full md:w-1/2 md:order-2 order-1 flex justify-center'>
+                <img className="rounded-full object-cover h-70 md:h-100" src={meImg} alt="" />
+            </div>
+        </div>
+    </section>
+
+}

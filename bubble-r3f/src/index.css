@@ -1,9 +1,21 @@
 @import "tailwindcss";
 
+:root {
+  --color-text: #6E6E6E;
+}
+
 @font-face {
     font-family: 'Satoshi';
     src: url('/fonts/Satoshi-Regular.ttf') format('truetype');
     font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'SatoshiBold';
+    src: url('/fonts/Satoshi-Bold.ttf') format('truetype');
+    font-weight: 700;
     font-style: normal;
     font-display: swap;
 }
@@ -19,17 +31,43 @@
     --color-pink-400: #ED709C;
     --color-pink-500: #E94C83;
     --color-pink-600: #BA3D69;
+
+    --font-bold: 'SatoshiBold', sans-serif;
+}
+
+@layer base {
+  h1, h2, h3, h4, h5, h6 {
+    color: #ffffff; /* o usar la variable de theme si la tienes: color: var(--color-white); */
+  }
+  
+  body {
+    color: var(--color-text);
+  }
+
+  p {
+    color: var(--color-text);
+  }
+}
+
+.title{
+  @apply text-center text-5xl mb-32;
+  font-family: 'SatoshiBold', sans-serif;
 }
 
 .link {
   @apply hover:text-pink transition cursor-pointer;
 }
 
+.tag {
+  @apply border-2 px-5 py-1 border-solid border-white rounded-full text-white;
+}
+
+.button{
+  @apply bg-blue text-white px-5 py-1 rounded-full
+}
 
 body {
   margin: 0;
-  color: white;
-
   font-family: 'Satoshi', sans-serif;
 
   /* diameter of the circle */
@@ -47,10 +85,25 @@ body {
 }
 
 
+main {
+  padding: 180px;
+}
+
+@media (max-width: 776px) {
+  main {
+    padding: 30px;
+  }
+}
+
+section:not(:last-child){
+  margin-bottom: 240px;
+}
+
+
 
 #canvas-container{
   height: 100%;
   width: 100%;
-  z-index: 0;
+  z-index: -1;
   position: fixed;
 }

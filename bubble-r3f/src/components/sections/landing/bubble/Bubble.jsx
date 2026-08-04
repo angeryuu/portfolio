@@ -144,6 +144,15 @@ export default function Bubble () {
 
     
     useFrame((state, delta) => {
+        const scrollY = window.scrollY;
+
+        
+        camera.position.y = THREE.MathUtils.lerp(
+            camera.position.y,
+            -scrollY * 0.3,
+            0.1
+        )
+
         if (materialRef.current) {
             const { clock } = state;
             materialRef.current.uniforms.uTime.value = clock.getElapsedTime();

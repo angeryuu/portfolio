@@ -1,7 +1,9 @@
 import './App.css'
 import { Header } from './components/layout/header/Header.jsx'
-import { CanvasComponent } from './components/canvas/CanvasComponent.jsx';
-
+import { CanvasComponent } from './components/sections/landing/canvas/CanvasComponent.jsx';
+import {About} from './components/sections/about/About.jsx'
+import { Experience } from './components/sections/experience/Experience.jsx';
+import { Projects } from './components/sections/projects/Projects.jsx';
 
 function App() {
 
@@ -11,6 +13,13 @@ function App() {
 
         <CanvasComponent/>
 
+        <div className="h-screen" />
+
+        <main>
+          <About/>
+          <Experience/>
+          <Projects/>
+        </main>
         
       </>
   )
