@@ -8,11 +8,11 @@ import CustomShaderMaterial from 'three-custom-shader-material'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
 import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js'
 
-import vertexShader from '../../shaders/bubble/vertex.glsl'
-import fragmentShader from '../../shaders/bubble/fragment.glsl'
+import vertexShader from './shaders/bubble/vertex.glsl'
+import fragmentShader from './shaders/bubble/fragment.glsl'
 
 import { createControlsSchema } from './controls';
-import { useBubbleStore } from '../../stores/bubbleStore'
+import { useBubbleStore } from '../../../../stores/bubbleStore'
 
 
 import gsap from 'gsap'
