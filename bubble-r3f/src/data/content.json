@@ -43,15 +43,14 @@
       {
         "label": "WEB",
         "items": [
-          {"label": "Portfolio", "videoSrc": "/videos/Portfolio.webm", "skills": ["React", "ThreeJS", "Tailwind"]},
-          {"label": "Food Radar", "videoSrc": "/videos/Portfolio.webm", "skills": []},
-          {"label": "OpenNebula", "videoSrc": "/videos/Portfolio.webm", "skills": []}
+          {"label": "Portfolio", "date": "2026", "videoSrc": "/videos/Portfolio.webm", "skills": ["React", "ThreeJS", "Tailwind"]},
+          {"label": "Delectatech", "date": "2024", "videoSrc": "/videos/Delectaweb.webm", "skills": ["Wordpress", "CSS", "Javascript"]}
         ]
       },
       {
         "label": "3D",
         "items": [
-          {"label": "Chick Bath Environment", "videoSrc": "/videos/Chickbath.webm", "skills": ["Blender", "Unreal Engine 5", "Substance Painter", "ZBrush"], "link": "https://www.artstation.com/artwork/qJ15nn"},
+          {"label": "Chick Bath Environment", "date": "2025", "videoSrc": "/videos/ChickBath.webm", "skills": ["Blender", "Unreal Engine 5", "Substance Painter", "ZBrush"], "link": "https://www.artstation.com/artwork/qJ15nn"},
           {"label": "Character", "videoSrc": "/videos/Portfolio.webm", "skills": []}
         ]
       }
@@ -63,7 +62,7 @@
     "sectionTitle": "CONTACTO",
     "links": ["Linkedin", "CV", "Mail"]
   },
-  "footer": "© José Ángel Chico Martos. Todos los derechos reservados.",
+  "copyright": "José Ángel Cívico Martos. Todos los derechos reservados.",
   "glossary": {
     "ver_mas": "Ver más"
   }

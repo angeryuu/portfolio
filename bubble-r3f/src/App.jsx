@@ -4,6 +4,7 @@ import { CanvasComponent } from './components/sections/landing/canvas/CanvasComp
 import {About} from './components/sections/about/About.jsx'
 import { Experience } from './components/sections/experience/Experience.jsx';
 import { Projects } from './components/sections/projects/Projects.jsx';
+import { Footer } from './components/layout/footer/Footer.jsx';
 
 function App() {
 
@@ -21,6 +22,7 @@ function App() {
           <Projects/>
         </main>
         
+        <Footer/>
       </>
   )
 }

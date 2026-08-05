@@ -26,6 +26,16 @@
     --color-background: #070608;
     --color-pink: #E94C83;
     --color-blue: #3F3FE8;
+    --color-gray: #6E6E6E;
+
+    --color-blue-400: #6565ED;
+    --color-blue-500: #3F3FE8;
+    --color-blue-600: #3232BA;
+
+    --color-gray-300: #A8A8A8;
+    --color-gray-400: #8B8B8B;
+    --color-gray-500: #6E6E6E;
+    --color-gray-600: #585858;
 
     /* Puedes definir una escala completa si la necesitas */
     --color-pink-400: #ED709C;
@@ -59,11 +69,11 @@
 }
 
 .tag {
-  @apply border-2 px-5 py-1 border-solid border-white rounded-full text-white;
+  @apply text-sm text-gray-300 border-2 px-5 py-1 border-solid border-gray-300 rounded-full;
 }
 
 .button{
-  @apply bg-blue text-white px-5 py-1 rounded-full
+  @apply text-sm bg-blue text-white px-5 py-1 rounded-full
 }
 
 body {
@@ -85,17 +95,17 @@ body {
 }
 
 
-main {
+main, footer {
   padding: 180px;
 }
 
 @media (max-width: 776px) {
-  main {
+  main, footer {
     padding: 30px;
   }
 }
 
-section:not(:last-child){
+section{
   margin-bottom: 240px;
 }
 

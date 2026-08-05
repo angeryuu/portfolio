@@ -1,20 +1,23 @@
 import content from '@/data/content.json';
-import videoSrc from '/videos/Chickbath.webm';
+
 import { useEffect, useRef, useState } from 'react';
+import { ExternalLinkIcon } from '../../ui/ExternalLinkIcon';
 
 export function Projects(){
 
     const [selectedVideo, setSelectedVideo] = useState(null)
     const [skills, setSkills] = useState([])
     const [link, setLink] = useState(null)
+    const [date, setDate] = useState(null)
 
     const videoRef = useRef()
 
-    const handleMouseEnter = (src, skills, link) => {
+    const handleMouseEnter = (src, skills, link, date) => {
         if(!src) return;
         setSelectedVideo(src)
         setSkills(skills)
         setLink(link)
+        setDate(date)
     }
 
     useEffect(() => {
@@ -36,9 +39,9 @@ export function Projects(){
                         return (
                             <>
                                 <h3 className='not-first:mt-20 mb-20  text-pink font-bold text-3xl'>{list.label}</h3>
-                                <ul key={list}>
+                                <ul key={list} className='inline-block'>
                                     {list.items.map((item, index) => {
-                                        return <li onMouseEnter={() => handleMouseEnter(item.videoSrc, item.skills, item.link)} className='mb-6 text-lg transition-all cursor-pointer hover:font-bold hover:text-2xl text-white'>
+                                        return <li onMouseEnter={() => handleMouseEnter(item.videoSrc, item.skills, item.link, item.date)} className='mb-6 text-lg transition-all cursor-pointer hover:font-bold hover:text-2xl text-white'>
                                             {item.label}
                                         </li>
                                     })}
@@ -47,7 +50,8 @@ export function Projects(){
                             )
                     })}
                 </div>
-                <div className='w-2/3 justify-self-center'>
+                <div className='w-2/3 flex flex-col items-center'>
+                    {date && <time className='mb-3 text-2xl'>{date}</time>}
                     <video
                         ref={videoRef}
                         autoPlay
@@ -55,16 +59,16 @@ export function Projects(){
                         muted
                         playsInline
                         preload="metadata"
-                        className="w-160 object-cover rounded-2xl border-gray-800 border-2 border-solid"
+                        className="object-cover rounded-2xl border-gray-800 border-2 border-solid"
                     >
                         <source src={selectedVideo} type="video/webm" />
                     </video>
 
-                    <div className='flex mt-4'>
+                    <div className='flex mt-4 gap-8'>
                         <div className='flex gap-4'>
                             {skills.map(item => <div className='tag'>{item}</div>)}
                         </div>
-                        {link && <a href={link} target="_blank" className='ml-auto button'>{content.glossary.ver_mas}</a>}
+                        {link && <a href={link} target="_blank" className='ml-auto button flex items-center gap-3 whitespace-nowrap'>{content.glossary.ver_mas}<ExternalLinkIcon fill="white" className="text-sm w-5"/></a>}
                     </div>
                 </div>
             </div>
