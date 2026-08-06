@@ -2,7 +2,7 @@ import content from '@/data/content.json';
 import meImg from '@/assets/images/me.jpg';
 
 export function About(){
-    return <section>
+    return <section id="about">
         <h2 className='title'>{content.about.sectionTitle}</h2>
         <div className="flex flex-col md:flex-row gap-10">
             <div className='w-full md:w-1/2 md:order-1 order-2'>

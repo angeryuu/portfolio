@@ -3,9 +3,9 @@ import './Experience.css';
 
 export function Experience(){
     return (
-        <section>
+        <section id="experience">
             <h2 className='title'>{content.experience.sectionTitle}</h2>
-            <ul className='timeline'>
+            <ul className='timeline mb-32'>
                 {content.experience.items.map((item, index) => {
                     return (
                     <li key={index} className='experience-card' style={{ gridRow: index + 1 }}>

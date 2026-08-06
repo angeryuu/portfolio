@@ -29,7 +29,7 @@ export function Projects(){
     
 
     return (
-        <section>
+        <section id="projects">
             <h2 className='title'>{content.projects.sectionTitle}</h2>
 
             <div className='flex'>
@@ -72,6 +72,7 @@ export function Projects(){
                     </div>
                 </div>
             </div>
+            
             
         </section>
     )

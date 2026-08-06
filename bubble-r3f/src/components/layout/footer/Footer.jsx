@@ -10,8 +10,8 @@ export function Footer () {
         <footer>
             <h2 class="title">{content.contact.sectionTitle}</h2>
             <div className='flex items-center justify-between mb-24'>
-                {content.contact.links.map(link => {
-                    return <a href="" target="_blank" className='text-white text-xl flex items-center gap-3 whitespace-nowrap'>{link}<ExternalLinkIcon fill="white" className="text-sm w-5" /></a>
+                {content.contact.links.map((item) => {
+                    return <a href={item.url} target={item.name === "Linkedin" ? "_blank" : "_self"} {...(item.name === "CV" ? { download: true } : {})} className='w-65 justify-center text-white text-xl flex items-center gap-3 whitespace-nowrap'>{item.name}<ExternalLinkIcon fill="white" className="text-sm w-5" /></a>
                 })}
             </div>
             

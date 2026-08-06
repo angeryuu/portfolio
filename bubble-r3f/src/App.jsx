@@ -5,6 +5,8 @@ import {About} from './components/sections/about/About.jsx'
 import { Experience } from './components/sections/experience/Experience.jsx';
 import { Projects } from './components/sections/projects/Projects.jsx';
 import { Footer } from './components/layout/footer/Footer.jsx';
+import { Software } from './components/sections/software/Software.jsx';
+import { Education } from './components/sections/education/Education.jsx';
 
 function App() {
 
@@ -19,6 +21,8 @@ function App() {
         <main>
           <About/>
           <Experience/>
+          <Software/>
+          <Education/>
           <Projects/>
         </main>
         

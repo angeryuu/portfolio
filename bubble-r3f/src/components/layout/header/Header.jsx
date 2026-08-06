@@ -18,7 +18,7 @@ export function Header(){
 
 
                     {/* Nav Items */}
-                    {content.nav.map((item, index) => <li className={`link ${index === 0 ? 'ml-auto' : ''}`}>{item}</li>)}
+                    {content.nav.map((item, index) => <li className={`link ${index === 0 ? 'ml-auto' : ''}`}><a {...(item.name === "CV" ? { download: true } : {})} href={item.url}>{item.name}</a></li>)}
                 </nav>
             </header>
     )
