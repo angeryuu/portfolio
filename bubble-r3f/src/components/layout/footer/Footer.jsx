@@ -1,13 +1,17 @@
 import content from '@/data/content.json';
 import { ExternalLinkIcon } from '../../ui/ExternalLinkIcon';
+import { useRef } from 'react';
+import { useFadeIn } from '@/components/hooks/useFadeIn';
 
 export function Footer () {
 
     const currentYear = new Date().getFullYear();
+    const ref = useRef()
+    useFadeIn(ref)
 
     return (
         <>
-        <footer>
+        <footer ref={ref}>
             <h2 class="title">{content.contact.sectionTitle}</h2>
             <div className='flex items-center justify-between mb-24'>
                 {content.contact.links.map((item) => {

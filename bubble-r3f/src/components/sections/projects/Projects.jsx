@@ -1,9 +1,15 @@
 import content from '@/data/content.json';
 
 import { useEffect, useRef, useState } from 'react';
-import { ExternalLinkIcon } from '../../ui/ExternalLinkIcon';
+import { ExternalLinkIcon } from '@/components/ui/ExternalLinkIcon';
+
+import { useFadeIn } from '@/components/hooks/useFadeIn';
 
 export function Projects(){
+
+
+    const ref = useRef()
+    useFadeIn(ref)
 
     const [selectedVideo, setSelectedVideo] = useState(null)
     const [skills, setSkills] = useState([])
@@ -29,7 +35,7 @@ export function Projects(){
     
 
     return (
-        <section id="projects">
+        <section ref={ref} id="projects">
             <h2 className='title'>{content.projects.sectionTitle}</h2>
 
             <div className='flex'>

@@ -1,9 +1,14 @@
 import content from '@/data/content.json'
 import './Experience.css';
+import { useRef } from 'react';
+import { useFadeIn } from '@/components/hooks/useFadeIn';
 
 export function Experience(){
+    const ref = useRef()
+    useFadeIn(ref)
+
     return (
-        <section id="experience">
+        <section ref={ref} id="experience">
             <h2 className='title'>{content.experience.sectionTitle}</h2>
             <ul className='timeline mb-32'>
                 {content.experience.items.map((item, index) => {

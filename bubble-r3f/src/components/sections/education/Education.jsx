@@ -1,8 +1,13 @@
 import content from '@/data/content.json'
+import { useRef } from 'react';
+import { useFadeIn } from '@/components/hooks/useFadeIn';
 
 export function Education(){
+    const ref = useRef()
+    useFadeIn(ref)
+
     return (
-        <section>
+        <section ref={ref}>
             <h2 className="title">{content.education.sectionTitle}</h2>
             <ul className='grid grid-cols-2 gap-y-30 gap-x-30'>
                 {content.education.titles.map((title, index) => {

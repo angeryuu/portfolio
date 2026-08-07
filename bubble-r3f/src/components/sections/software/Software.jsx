@@ -1,8 +1,13 @@
 import content from '@/data/content.json'
+import { useRef } from 'react';
+import { useFadeIn } from '@/components/hooks/useFadeIn';
 
 export function Software() {
+    const ref = useRef()
+    useFadeIn(ref)
+
     return (
-        <section>
+        <section ref={ref}>
             <h2 className='title'>{content.software.sectionTitle}</h2>
             <div class="flex gap-40">
                 <div class="w-1/2">
