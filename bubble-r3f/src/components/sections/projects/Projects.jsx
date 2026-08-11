@@ -11,7 +11,7 @@ export function Projects(){
     const ref = useRef()
     useFadeIn(ref)
 
-    const [selectedVideo, setSelectedVideo] = useState(null)
+    const [selectedVideo, setSelectedVideo] = useState('/videos/ChickBath.webm')
     const [skills, setSkills] = useState([])
     const [link, setLink] = useState(null)
     const [date, setDate] = useState(null)

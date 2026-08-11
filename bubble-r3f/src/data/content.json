@@ -136,6 +136,8 @@
   },
   "copyright": "José Ángel Cívico Martos. Todos los derechos reservados.",
   "glossary": {
-    "ver_mas": "Ver más"
+    "ver_mas": "Ver más",
+    "copy_to_clipboard": "Copiar al portapapeles",
+    "copied": "¡Copiado!"
   }
 }

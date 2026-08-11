@@ -60,6 +60,15 @@ export default function Bubble () {
     if (materialRef.current) {
         materialRef.current.needsUpdate = true
     }
+    if(currentIndex === 0) {
+        materialRef.current.uniforms.fresnelIntensity.value = 1.0;
+        materialRef.current.uniforms.uPositionFrequency.value = 0.06;
+        materialRef.current.uniforms.uStrength.value = 2.4;
+    }else {
+        materialRef.current.uniforms.fresnelIntensity.value = 0.8;
+        materialRef.current.uniforms.uPositionFrequency.value = 0.1;
+        materialRef.current.uniforms.uStrength.value = 0.1;
+    }
     }, [currentIndex])
 
 
@@ -159,8 +168,8 @@ export default function Bubble () {
         }
 
         if(meshRef.current){
-            meshRef.current.rotation.y += delta * 0.3;
-            meshRef.current.rotation.z += delta * 0.5;
+            meshRef.current.rotation.y += delta * 1;
+            // meshRef.current.rotation.x += delta * 1;
         }
         
     })
