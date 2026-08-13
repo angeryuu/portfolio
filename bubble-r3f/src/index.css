@@ -21,11 +21,23 @@
 }
 
 
+
+:root{
+    --bg-main: #070608;
+    --bg-dots: #262428;
+    --text-primary: #E94C83;
+}
+
+html:not(.dark){
+    --bg-main: white;
+    --bg-dots: #e0e0e0;
+    --text-primary: #3F3FE8;
+}
+
+
 @theme {
-    /* Basándome en los colores que veo en tu captura */
-    --color-background: #070608;
-    --color-pink: #E94C83;
-    --color-blue: #3F3FE8;
+    --color-background: var(--bg-main);
+    --color-primary: var(--text-primary);
     --color-gray: #6E6E6E;
 
     --color-blue-400: #6565ED;
@@ -37,7 +49,6 @@
     --color-gray-500: #6E6E6E;
     --color-gray-600: #585858;
 
-    /* Puedes definir una escala completa si la necesitas */
     --color-pink-400: #ED709C;
     --color-pink-500: #E94C83;
     --color-pink-600: #BA3D69;
@@ -65,7 +76,7 @@
 }
 
 .link {
-  @apply hover:text-pink transition cursor-pointer;
+  @apply hover:text-primary transition cursor-pointer;
 }
 
 .tag {
@@ -73,7 +84,7 @@
 }
 
 .button{
-  @apply text-sm bg-blue text-white px-5 py-1 rounded-full
+  @apply text-sm bg-primary text-white px-5 py-1 rounded-full
 }
 
 body {
@@ -88,8 +99,8 @@ body {
         var(--d) 
         var(--d), 
         
-     #262428   calc(var(--d) - 1px), 
-     #070608  var(--d)
+     var(--bg-dots)   calc(var(--d) - 1px), 
+     var(--bg-main)  var(--d)
    ) 
    0 0 / 50px 50px;
 }

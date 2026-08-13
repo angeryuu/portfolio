@@ -1,8 +1,8 @@
 import content from '@/data/content.json';
-import { ExternalLinkIcon } from '../../ui/ExternalLinkIcon';
+import { ExternalLinkIcon } from '@/components/ui/icons/ExternalLinkIcon';
 import { useRef } from 'react';
 import { useFadeIn } from '@/components/hooks/useFadeIn';
-import { ClipboardButton } from '../../ui/ClipboardButton';
+import { ClipboardButton } from '@/components/ui/ClipboardButton';
 
 export function Footer () {
 

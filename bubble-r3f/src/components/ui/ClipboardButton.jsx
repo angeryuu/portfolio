@@ -1,5 +1,5 @@
-import CopyIcon from '@/components/ui/CopyIcon.jsx'
-import CheckIcon from '@/components/ui/CheckIcon.jsx'
+import CopyIcon from '@/components/ui/icons/CopyIcon.jsx'
+import CheckIcon from '@/components/ui/icons/CheckIcon.jsx'
 import { useState } from 'react';
 import { Tooltip } from './Tooltip';
 import content from '@/data/content.json';

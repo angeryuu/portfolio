@@ -15,7 +15,7 @@ export function Experience(){
                     return (
                     <li key={index} className='experience-card' style={{ gridRow: index + 1 }}>
                         <time className="block text-base font-bold text-white mb-6">{item.date}</time>
-                        <h3 className="text-2xl text-pink font-bold mb-2">{item.role}</h3>
+                        <h3 className="text-2xl text-primary font-bold mb-2">{item.role}</h3>
                         <p className="text-base text-white mb-4 font-bold">{item.company}</p>
                         <p className="job-description text-justify text-sm">{item.description}</p>
                     </li>

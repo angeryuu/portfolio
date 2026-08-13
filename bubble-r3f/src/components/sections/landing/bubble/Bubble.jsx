@@ -108,14 +108,14 @@ export default function Bubble () {
 
         gsap.to(meshRef.current.scale, {
             x: 0, y: 0, z: 0,
-            duration: 0.25,        
+            duration: 0.1,        
             ease: 'power2.in',
             onComplete: () => {
                 setCurrentIndex(pendingIndexRef.current)
 
                 gsap.to(meshRef.current.scale, {
                     x: 1, y: 1, z: 1,
-                    duration: 0.25,
+                    duration: 0.1,
                     ease: 'power2.out',
                     onComplete: () => {
                         isAnimatingRef.current = false

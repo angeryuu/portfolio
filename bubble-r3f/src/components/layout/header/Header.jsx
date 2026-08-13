@@ -1,11 +1,12 @@
 import { useBubbleStore } from '@/stores/bubbleStore'
 import content from '@/data/content.json'
+import SwitchThemeIcon from '@/components/ui/SwitchThemeIcon/SwitchThemeIcon';
 
 
 export function Header(){
 
     const setTargetIndex = useBubbleStore((state) => state.setTargetIndex)
-
+    
     return (
             <header className="py-8 px-10 absolute w-full bg-background">
                 <nav className='flex justify-center list-none gap-20'>
@@ -19,6 +20,8 @@ export function Header(){
 
                     {/* Nav Items */}
                     {content.nav.map((item, index) => <li onMouseEnter={() => setTargetIndex((index+1)%3)} onMouseLeave={() => setTargetIndex(0)} className={`link ${index === 0 ? '' : ''}`}><a {...(item.name === "CV" ? { download: true } : {})} href={item.url}>{item.name}</a></li>)}
+
+                    <SwitchThemeIcon></SwitchThemeIcon>
                 </nav>
             </header>
     )
