@@ -12,9 +12,9 @@ export function Projects(){
     useFadeIn(ref)
 
     const [selectedVideo, setSelectedVideo] = useState('/videos/ChickBath.webm')
-    const [skills, setSkills] = useState([])
-    const [link, setLink] = useState(null)
-    const [date, setDate] = useState(null)
+    const [skills, setSkills] = useState(['Blender', 'Unreal Engine 5', 'Substance Painter', 'ZBrush'])
+    const [link, setLink] = useState('https://www.artstation.com/artwork/qJ15nn ')
+    const [date, setDate] = useState('2025')
 
     const videoRef = useRef()
 
@@ -24,6 +24,8 @@ export function Projects(){
         setSkills(skills)
         setLink(link)
         setDate(date)
+
+        console.log(link, skills)
     }
 
     useEffect(() => {
@@ -43,16 +45,16 @@ export function Projects(){
 
                     {content.projects.categories.map((list, index) => {
                         return (
-                            <>
+                            <div key={index} >
                                 <h3 className='md:text-left text-center md:not-first:mt-20 not-first:mt-10 md:mb-20 mb-5 text-primary font-bold text-3xl'>{list.label}</h3>
                                 <ul key={list} className='md:inline-block'>
                                     {list.items.map((item, index) => {
-                                        return <li onMouseEnter={() => handleMouseEnter(item.videoSrc, item.skills, item.link, item.date)} className='md:text-left text-center md:mb-6 mb:3 text-lg transition-all cursor-pointer hover:font-bold hover:text-2xl text-base'>
+                                        return <li key={index} onMouseEnter={() => handleMouseEnter(item.videoSrc, item.skills, item.link, item.date)} className='md:text-left text-center md:mb-6 mb:3 text-lg transition-all cursor-pointer hover:font-bold hover:text-2xl text-base'>
                                             {item.label}
                                         </li>
                                     })}
                                 </ul>
-                            </>
+                            </div>
                             )
                     })}
                 </div>
@@ -72,7 +74,7 @@ export function Projects(){
 
                     <div className='flex flex-wrap md:flex-nowrap mt-4 md:gap-8 gap-3 justify-center'>
                         <div className='flex flex-wrap md:flex-nowrap md:gap-4 gap-3 justify-center'>
-                            {skills.map(item => <div className='tag'>{item}</div>)}
+                            {skills.map((item, index) => <div key={index} className='tag'>{item}</div>)}
                         </div>
                         {link && <a href={link} target="_blank" className='md:ml-auto button flex items-center gap-3 whitespace-nowrap'>{content.glossary.ver_mas}<ExternalLinkIcon fill="white" className="text-sm w-5"/></a>}
                     </div>

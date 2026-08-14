@@ -9,17 +9,17 @@ export function Software() {
     return (
         <section ref={ref}>
             <h2 className='title'>{content.software.sectionTitle}</h2>
-            <div class="flex md:gap-40 gap-20 md:flex-row flex-col">
-                <div class="md:w-1/2">
-                    <h3 class="text-center mb-10 text-3xl text-primary">Web</h3>
+            <div className="flex md:gap-40 gap-20 md:flex-row flex-col">
+                <div className="md:w-1/2">
+                    <h3 className="text-center mb-10 text-3xl text-primary">Web</h3>
                     <div className='flex flex-wrap justify-center gap-4 '>
-                        {content.software.skills.web.map(skill => <div className='tag'>{skill}</div>)}
+                        {content.software.skills.web.map((skill, index) => <div key={index} className='tag'>{skill}</div>)}
                     </div>
                 </div>
-                <div class="md:w-1/2">
-                    <h3 class="text-center mb-10 text-3xl text-primary">3D</h3>
+                <div className="md:w-1/2">
+                    <h3 className="text-center mb-10 text-3xl text-primary">3D</h3>
                     <div className='flex flex-wrap justify-center gap-4 '>
-                        {content.software.skills["3D"].map(skill => <div className='tag'>{skill}</div>)}
+                        {content.software.skills["3D"].map((skill, index) => <div key={index} className='tag'>{skill}</div>)}
                     </div>
                 </div>
             </div>

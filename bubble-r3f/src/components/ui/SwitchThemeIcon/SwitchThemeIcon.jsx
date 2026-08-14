@@ -9,7 +9,6 @@ export default function SwitchThemeIcon() {
 
   const toggleState = () => {
     toggleTheme()
-    setIsEnabled((prevState) => !prevState);
   };
 
   return (
@@ -27,7 +26,7 @@ export default function SwitchThemeIcon() {
           name="toggle"
           type="checkbox"
           checked={theme === 'dark'}
-          onClick={toggleState}
+          onChange={toggleState}
         />
       </div>
     </label>

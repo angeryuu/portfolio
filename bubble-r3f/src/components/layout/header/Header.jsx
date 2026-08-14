@@ -19,7 +19,7 @@ export function Header(){
 
 
                     {/* Nav Items */}
-                    {content.nav.map((item, index) => <li onMouseEnter={() => setTargetIndex((index+1)%3)} onMouseLeave={() => setTargetIndex(0)} className={`link ${index === 0 ? '' : ''}`}><a {...(item.name === "CV" ? { download: true } : {})} href={item.url}>{item.name}</a></li>)}
+                    {content.nav.map((item, index) => <li key={index} onMouseEnter={() => setTargetIndex((index+1)%3)} onMouseLeave={() => setTargetIndex(0)} className={`link ${index === 0 ? '' : ''}`}><a {...(item.name === "CV" ? { download: true } : {})} href={item.url}>{item.name}</a></li>)}
 
                     <SwitchThemeIcon></SwitchThemeIcon>
                 </nav>
