@@ -43,3 +43,20 @@
     justify-self: center;
     
 }
+
+@media (max-width: 776px) {
+  .timeline {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        gap: 3rem;
+    }
+
+    .timeline::before{
+        display: none;
+    }
+
+    .experience-card h3::before {
+        display: none;
+    }
+}

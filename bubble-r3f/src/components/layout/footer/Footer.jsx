@@ -14,7 +14,7 @@ export function Footer () {
         <>
         <footer ref={ref}>
             <h2 class="title">{content.contact.sectionTitle}</h2>
-            <div className='flex items-center justify-between mb-24'>
+            <div className='flex items-center md:justify-between justify-center gap-10 md:gap-0 mb-24 md:flex-nowrap flex-wrap'>
                 {content.contact.links.map((item) => {
                     return <div className="flex"><a href={item.url} target={item.name === "Linkedin" ? "_blank" : "_self"} {...(item.name === "CV" ? { download: true } : {})} className='w-65 justify-center text-base text-xl flex items-center gap-3 whitespace-nowrap'>
                         {item.name}<ExternalLinkIcon className="fill-base text-sm w-5" />

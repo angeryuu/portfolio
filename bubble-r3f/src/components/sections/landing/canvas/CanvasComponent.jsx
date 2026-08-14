@@ -5,6 +5,8 @@ import Name from '../text/Name'
 import { OrbitControls } from '@react-three/drei';
 
 export function CanvasComponent() {
+
+    
     return <>
         <div id="canvas-container">
             <Canvas camera={{position: [0, 0, 30]}}>

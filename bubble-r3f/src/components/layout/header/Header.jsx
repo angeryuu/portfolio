@@ -8,8 +8,8 @@ export function Header(){
     const setTargetIndex = useBubbleStore((state) => state.setTargetIndex)
     
     return (
-            <header className="py-8 px-10 absolute w-full bg-background">
-                <nav className='flex justify-center list-none gap-20'>
+            <header className="md:py-8 md:px-10 py-4 px-6 absolute w-full bg-background">
+                <nav className='flex justify-center list-none md:gap-20 gap-3'>
                     {/* <li onMouseEnter={() => setTargetIndex(1)} onMouseLeave={() => setTargetIndex(0)}>
                         About me
                     </li> */}

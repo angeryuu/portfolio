@@ -38,16 +38,16 @@ export function Projects(){
         <section ref={ref} id="projects">
             <h2 className='title'>{content.projects.sectionTitle}</h2>
 
-            <div className='flex'>
-                <div className='w-1/3'>
+            <div className='flex flex-col md:flex-row'>
+                <div className='md:w-1/3'>
 
                     {content.projects.categories.map((list, index) => {
                         return (
                             <>
-                                <h3 className='not-first:mt-20 mb-20  text-primary font-bold text-3xl'>{list.label}</h3>
-                                <ul key={list} className='inline-block'>
+                                <h3 className='md:text-left text-center md:not-first:mt-20 not-first:mt-10 md:mb-20 mb-5 text-primary font-bold text-3xl'>{list.label}</h3>
+                                <ul key={list} className='md:inline-block'>
                                     {list.items.map((item, index) => {
-                                        return <li onMouseEnter={() => handleMouseEnter(item.videoSrc, item.skills, item.link, item.date)} className='mb-6 text-lg transition-all cursor-pointer hover:font-bold hover:text-2xl text-base'>
+                                        return <li onMouseEnter={() => handleMouseEnter(item.videoSrc, item.skills, item.link, item.date)} className='md:text-left text-center md:mb-6 mb:3 text-lg transition-all cursor-pointer hover:font-bold hover:text-2xl text-base'>
                                             {item.label}
                                         </li>
                                     })}
@@ -56,8 +56,8 @@ export function Projects(){
                             )
                     })}
                 </div>
-                <div className='w-2/3 flex flex-col items-center'>
-                    {date && <time className='mb-3 text-2xl'>{date}</time>}
+                <div className='md:w-2/3 flex flex-col items-center'>
+                    {date && <time className='mt-10 md:mt-0 mb-3 text-2xl'>{date}</time>}
                     <video
                         ref={videoRef}
                         autoPlay
@@ -70,11 +70,11 @@ export function Projects(){
                         <source src={selectedVideo} type="video/webm" />
                     </video>
 
-                    <div className='flex mt-4 gap-8'>
-                        <div className='flex gap-4'>
+                    <div className='flex flex-wrap md:flex-nowrap mt-4 md:gap-8 gap-3 justify-center'>
+                        <div className='flex flex-wrap md:flex-nowrap md:gap-4 gap-3 justify-center'>
                             {skills.map(item => <div className='tag'>{item}</div>)}
                         </div>
-                        {link && <a href={link} target="_blank" className='ml-auto button flex items-center gap-3 whitespace-nowrap'>{content.glossary.ver_mas}<ExternalLinkIcon fill="white" className="text-sm w-5"/></a>}
+                        {link && <a href={link} target="_blank" className='md:ml-auto button flex items-center gap-3 whitespace-nowrap'>{content.glossary.ver_mas}<ExternalLinkIcon fill="white" className="text-sm w-5"/></a>}
                     </div>
                 </div>
             </div>
