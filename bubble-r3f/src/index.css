@@ -25,12 +25,16 @@
 :root{
     --bg-main: #070608;
     --bg-dots: #262428;
+    --text-base: white;
+    --text-base-secondary: #8B8B8B;
     --text-primary: #E94C83;
 }
 
 html:not(.dark){
     --bg-main: white;
     --bg-dots: #e0e0e0;
+    --text-base: #2f2f2f;
+    --text-base-secondary: #8B8B8B;
     --text-primary: #3F3FE8;
 }
 
@@ -38,6 +42,8 @@ html:not(.dark){
 @theme {
     --color-background: var(--bg-main);
     --color-primary: var(--text-primary);
+    --color-base: var(--text-base);
+
     --color-gray: #6E6E6E;
 
     --color-blue-400: #6565ED;
@@ -71,7 +77,7 @@ html:not(.dark){
 }
 
 .title{
-  @apply text-center text-5xl mb-32;
+  @apply text-center text-5xl mb-32 text-base;
   font-family: 'SatoshiBold', sans-serif;
 }
 

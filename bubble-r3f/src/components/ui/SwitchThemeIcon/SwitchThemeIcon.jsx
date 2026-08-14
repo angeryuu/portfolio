@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import './SwitchThemeIcon.css';
 import { useTheme } from '@/context/ThemeContext';
+import  SunIcon  from '@/components/ui/icons/SunIcon.jsx' 
+import  MoonIcon  from '@/components/ui/icons/MoonIcon.jsx' 
 
 export default function SwitchThemeIcon() {
-  const [isEnabled, setIsEnabled] = useState(true);
   const { theme, toggleTheme } = useTheme();
 
   const toggleState = () => {
@@ -13,15 +14,19 @@ export default function SwitchThemeIcon() {
 
   return (
     <label className="toggle-wrapper" htmlFor="toggle">
-      <div className={`toggle ${isEnabled ? "enabled" : "disabled"}`}>
+      <div className={`toggle ${theme === 'dark' ? "enabled" : "disabled"}`}>
         <span className="hidden">
-          {isEnabled ? "Enable" : "Disable"}
+          {theme === 'dark' ? "Enable" : "Disable"}
         </span>
+        <div className="icons fill-base">
+          <SunIcon />
+          <MoonIcon />
+        </div>
         <input
           id="toggle"
           name="toggle"
           type="checkbox"
-          checked={isEnabled}
+          checked={theme === 'dark'}
           onClick={toggleState}
         />
       </div>

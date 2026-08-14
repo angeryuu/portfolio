@@ -21,7 +21,7 @@ export function ClipboardButton(props){
     return (
         <Tooltip text={tooltipText}>
             <div {...props}>
-                {!userClicked ? <CopyIcon onClick={handleClick} fill="white" className="cursor-pointer" /> : <CheckIcon fill="white"/>}
+                {!userClicked ? <CopyIcon onClick={handleClick} className="fill-base cursor-pointer" /> : <CheckIcon className="fill-base"/>}
 
             </div>
         </Tooltip>

@@ -12,9 +12,9 @@ export function Education(){
             <ul className='grid grid-cols-2 gap-y-30 gap-x-30'>
                 {content.education.titles.map((title, index) => {
                     return <li key={index} >
-                            <time className="text-center block text-base font-bold text-white mb-6">{title.date}</time>
-                            <h3 className={`text-xl ${index < 2 ? 'text-primary font-bold' : ''} text-center mb-2`}>{title.name}</h3>
-                            <p className="text-base  mb-4 text-gray-400 text-center">{title.institution}</p>
+                            <time className="text-center block text-base font-bold mb-6">{title.date}</time>
+                            <h3 className={`text-xl ${index < 2 ? 'text-primary font-bold' : 'text-base'} text-center mb-2`}>{title.name}</h3>
+                            <p className="text-base-secondary  mb-4  text-center">{title.institution}</p>
                         </li>
                 })}
             </ul>

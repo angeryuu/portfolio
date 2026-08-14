@@ -3,6 +3,7 @@ import { createContext, useContext, useEffect, useState } from 'react';
 const ThemeContext = createContext();
 
 export function ThemeProvider({ children }) {
+
   const [theme, setTheme] = useState(() => {
     if (typeof window !== 'undefined') {
       const savedTheme = localStorage.getItem('theme');
@@ -10,7 +11,7 @@ export function ThemeProvider({ children }) {
       if (savedTheme === 'light') {
         return 'light';
       }
-    }
+    }  
     // Para todos los demás casos (primera visita), es 'dark'
     return 'dark';
   });
@@ -23,6 +24,8 @@ export function ThemeProvider({ children }) {
     } else {
       root.classList.remove('dark');
     }
+
+    
 
     localStorage.setItem('theme', theme);
   }, [theme]);

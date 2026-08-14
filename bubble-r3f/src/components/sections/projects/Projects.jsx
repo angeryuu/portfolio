@@ -47,7 +47,7 @@ export function Projects(){
                                 <h3 className='not-first:mt-20 mb-20  text-primary font-bold text-3xl'>{list.label}</h3>
                                 <ul key={list} className='inline-block'>
                                     {list.items.map((item, index) => {
-                                        return <li onMouseEnter={() => handleMouseEnter(item.videoSrc, item.skills, item.link, item.date)} className='mb-6 text-lg transition-all cursor-pointer hover:font-bold hover:text-2xl text-white'>
+                                        return <li onMouseEnter={() => handleMouseEnter(item.videoSrc, item.skills, item.link, item.date)} className='mb-6 text-lg transition-all cursor-pointer hover:font-bold hover:text-2xl text-base'>
                                             {item.label}
                                         </li>
                                     })}
