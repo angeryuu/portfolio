@@ -1,6 +1,6 @@
 import { create } from 'zustand'
 
 export const useBubbleStore = create((set) => ({
-    targetIndex: 1,
+    targetIndex: 0,
     setTargetIndex: (index) => set({ targetIndex: index }),
 }))

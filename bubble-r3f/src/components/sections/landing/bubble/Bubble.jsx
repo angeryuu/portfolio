@@ -8,11 +8,11 @@ import CustomShaderMaterial from 'three-custom-shader-material'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
 import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js'
 
-import vertexShader from '../../shaders/bubble/vertex.glsl'
-import fragmentShader from '../../shaders/bubble/fragment.glsl'
+import vertexShader from './shaders/bubble/vertex.glsl'
+import fragmentShader from './shaders/bubble/fragment.glsl'
 
 import { createControlsSchema } from './controls';
-import { useBubbleStore } from '../../stores/bubbleStore'
+import { useBubbleStore } from '../../../../stores/bubbleStore'
 
 
 import gsap from 'gsap'
@@ -60,6 +60,15 @@ export default function Bubble () {
     if (materialRef.current) {
         materialRef.current.needsUpdate = true
     }
+    if(currentIndex === 0) {
+        materialRef.current.uniforms.fresnelIntensity.value = 1.0;
+        materialRef.current.uniforms.uPositionFrequency.value = 0.06;
+        materialRef.current.uniforms.uStrength.value = 2.4;
+    }else {
+        materialRef.current.uniforms.fresnelIntensity.value = 0.8;
+        materialRef.current.uniforms.uPositionFrequency.value = 0.1;
+        materialRef.current.uniforms.uStrength.value = 0.1;
+    }
     }, [currentIndex])
 
 
@@ -99,14 +108,14 @@ export default function Bubble () {
 
         gsap.to(meshRef.current.scale, {
             x: 0, y: 0, z: 0,
-            duration: 0.25,        
+            duration: 0.1,        
             ease: 'power2.in',
             onComplete: () => {
                 setCurrentIndex(pendingIndexRef.current)
 
                 gsap.to(meshRef.current.scale, {
                     x: 1, y: 1, z: 1,
-                    duration: 0.25,
+                    duration: 0.1,
                     ease: 'power2.out',
                     onComplete: () => {
                         isAnimatingRef.current = false
@@ -144,14 +153,23 @@ export default function Bubble () {
 
     
     useFrame((state, delta) => {
+        const scrollY = window.scrollY;
+
+        
+        camera.position.y = THREE.MathUtils.lerp(
+            camera.position.y,
+            -scrollY * 0.3,
+            0.1
+        )
+
         if (materialRef.current) {
             const { clock } = state;
             materialRef.current.uniforms.uTime.value = clock.getElapsedTime();
         }
 
         if(meshRef.current){
-            meshRef.current.rotation.y += delta * 0.3;
-            meshRef.current.rotation.z += delta * 0.5;
+            meshRef.current.rotation.y += delta * 1;
+            // meshRef.current.rotation.x += delta * 1;
         }
         
     })
