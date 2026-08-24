@@ -6,6 +6,7 @@ import path from 'path'
 
 // https://vite.dev/config/
 export default defineConfig({
+  base: '/portfolio/bubble-r3f',
   plugins: [react(), glsl(), tailwindcss()],
   resolve: {
     alias: {
