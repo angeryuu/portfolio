@@ -1,4 +1,4 @@
-import content from '@/data/content.json'
+import { useTheme } from '@/context/ThemeContext';
 import './Experience.css';
 import { useRef } from 'react';
 import { useFadeIn } from '@/components/hooks/useFadeIn';
@@ -6,6 +6,7 @@ import { useFadeIn } from '@/components/hooks/useFadeIn';
 export function Experience(){
     const ref = useRef()
     useFadeIn(ref)
+    const { content } = useTheme();
 
     return (
         <section ref={ref} id="experience">

@@ -67,14 +67,14 @@
         {
           "label": "WEB",
           "items": [
-            { "label": "Portfolio", "date": "2026", "videoSrc": "portfolio/videos/Portfolio.webm", "skills": ["React", "ThreeJS", "Tailwind"] },
-            { "label": "Delectatech", "date": "2024", "videoSrc": "portfolio/videos/Delectaweb.webm", "skills": ["Wordpress", "CSS", "Javascript"] }
+            { "label": "Portfolio", "date": "2026", "videoSrc": "/portfolio/videos/Portfolio.webm", "skills": ["React", "ThreeJS", "Tailwind"] },
+            { "label": "Delectatech", "date": "2024", "videoSrc": "/portfolio/videos/Delectaweb.webm", "skills": ["Wordpress", "CSS", "Javascript"] }
           ]
         },
         {
           "label": "3D",
           "items": [
-            { "label": "Chick Bath Environment", "date": "2025", "videoSrc": "portfolio/videos/ChickBath.webm", "skills": ["Blender", "Unreal Engine 5", "Substance Painter", "ZBrush"], "link": "https://www.artstation.com/artwork/qJ15nn" }
+            { "label": "Chick Bath Environment", "date": "2025", "videoSrc": "/portfolio/videos/ChickBath.webm", "skills": ["Blender", "Unreal Engine 5", "Substance Painter", "ZBrush"], "link": "https://www.artstation.com/artwork/qJ15nn" }
           ]
         }
       ]
@@ -163,14 +163,14 @@
         {
           "label": "WEB",
           "items": [
-            { "label": "Portfolio", "date": "2026", "videoSrc": "portfolio/videos/Portfolio.webm", "skills": ["React", "ThreeJS", "Tailwind"] },
-            { "label": "Delectatech", "date": "2024", "videoSrc": "portfolio/videos/Delectaweb.webm", "skills": ["Wordpress", "CSS", "Javascript"] }
+            { "label": "Portfolio", "date": "2026", "videoSrc": "/portfolio/videos/Portfolio.webm", "skills": ["React", "ThreeJS", "Tailwind"] },
+            { "label": "Delectatech", "date": "2024", "videoSrc": "/portfolio/videos/Delectaweb.webm", "skills": ["Wordpress", "CSS", "Javascript"] }
           ]
         },
         {
           "label": "3D",
           "items": [
-            { "label": "Chick Bath Environment", "date": "2025", "videoSrc": "portfolio/videos/ChickBath.webm", "skills": ["Blender", "Unreal Engine 5", "Substance Painter", "ZBrush"], "link": "https://www.artstation.com/artwork/qJ15nn" }
+            { "label": "Chick Bath Environment", "date": "2025", "videoSrc": "/portfolio/videos/ChickBath.webm", "skills": ["Blender", "Unreal Engine 5", "Substance Painter", "ZBrush"], "link": "https://www.artstation.com/artwork/qJ15nn" }
           ]
         }
       ]

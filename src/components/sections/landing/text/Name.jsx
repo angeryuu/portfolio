@@ -12,6 +12,8 @@ export default function Name(){
     
     const [name, setName] = useState(`ÁNGEL C. MARTOS`);
 
+    const { content } = useTheme();
+
     useEffect(() => {
         if (!theme) return; 
 

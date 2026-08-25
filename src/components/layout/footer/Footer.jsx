@@ -1,4 +1,4 @@
-import content from '@/data/content.json';
+import { useTheme } from '@/context/ThemeContext';
 import { ExternalLinkIcon } from '@/components/ui/icons/ExternalLinkIcon';
 import { useRef } from 'react';
 import { useFadeIn } from '@/components/hooks/useFadeIn';
@@ -9,6 +9,7 @@ export function Footer () {
     const currentYear = new Date().getFullYear();
     const ref = useRef()
     useFadeIn(ref)
+    const { content } = useTheme();
 
     return (
         <>
