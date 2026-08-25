@@ -6,7 +6,8 @@ import  MoonIcon  from '@/components/ui/icons/MoonIcon.jsx'
 
 export default function SwitchThemeIcon() {
   const { theme, toggleTheme } = useTheme();
-
+  const { content } = useTheme();
+  
   const toggleState = () => {
     toggleTheme()
   };

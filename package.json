@@ -1,9 +1,9 @@
 {
-  "name": "bubble-r3f",
+  "name": "portfolio",
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://angeryuu.github.io/portfolio/bubble-r3f",
+  "homepage": ".",
   "scripts": {
     "dev": "vite",
     "build": "vite build",

@@ -2,12 +2,15 @@ import CopyIcon from '@/components/ui/icons/CopyIcon.jsx'
 import CheckIcon from '@/components/ui/icons/CheckIcon.jsx'
 import { useState } from 'react';
 import { Tooltip } from './Tooltip';
-import content from '@/data/content.json';
+import { useTheme } from '@/context/ThemeContext';
 
 export function ClipboardButton(props){
+
+    const { content } = useTheme();
     const {text} = props;
     const [userClicked, setUserClicked] = useState(false);
     const [tooltipText, setTooltipText] = useState(content.glossary.copy_to_clipboard)
+    
 
     const handleClick = () => {
         navigator.clipboard.writeText(text)

@@ -1,4 +1,4 @@
-import content from '@/data/content.json';
+import { useTheme } from '@/context/ThemeContext';
 import meImg from '@/assets/images/me.jpg';
 import { useRef } from 'react';
 import { useFadeIn } from '@/components/hooks/useFadeIn';
@@ -6,7 +6,8 @@ import { useFadeIn } from '@/components/hooks/useFadeIn';
 export function About(){
     const ref = useRef()
     useFadeIn(ref)
-
+    const { content } = useTheme();
+    
     return <section ref={ref} id="about">
         <h2 className='title'>{content.about.sectionTitle}</h2>
         <div className="flex flex-col md:flex-row gap-10">

@@ -12,12 +12,11 @@ import vertexShader from './shaders/bubble/vertex.glsl'
 import fragmentShader from './shaders/bubble/fragment.glsl'
 
 import { createControlsSchema } from './controls';
-import { useBubbleStore } from '../../../../stores/bubbleStore'
+import { useBubbleStore } from '@/stores/bubbleStore'
 
 
 import gsap from 'gsap'
 import * as THREE from 'three'
-import { thickness } from 'three/src/nodes/TSL.js';
 
 export default function Bubble () {
 
@@ -26,15 +25,12 @@ export default function Bubble () {
         type: THREE.UnsignedByteType
     })
 
-    // const [currentIndex, setCurrentIndex] = useState(1)
     const targetIndex = useBubbleStore((state) => state.targetIndex)
     const [currentIndex, setCurrentIndex] = useState(targetIndex)
 
     const isAnimatingRef = useRef(false)
     const meshRef = useRef()
     const materialRef = useRef()
-    const scaleRef = useRef(1)
-    const phaseRef = useRef('idle')
     const pendingIndexRef = useRef(null)
 
 
@@ -57,18 +53,19 @@ export default function Bubble () {
      * Everytime model changes, material needs to be updated
      */
     useEffect(() => {
-    if (materialRef.current) {
-        materialRef.current.needsUpdate = true
-    }
-    if(currentIndex === 0) {
-        materialRef.current.uniforms.fresnelIntensity.value = 1.0;
-        materialRef.current.uniforms.uPositionFrequency.value = 0.06;
-        materialRef.current.uniforms.uStrength.value = 2.4;
-    }else {
-        materialRef.current.uniforms.fresnelIntensity.value = 0.8;
-        materialRef.current.uniforms.uPositionFrequency.value = 0.1;
-        materialRef.current.uniforms.uStrength.value = 0.1;
-    }
+        if (materialRef.current) {
+            materialRef.current.needsUpdate = true
+        }
+        console.log(currentIndex)
+        if(currentIndex === 0) {
+            materialRef.current.uniforms.fresnelIntensity.value = 1.0;
+            materialRef.current.uniforms.uPositionFrequency.value = 0.06;
+            materialRef.current.uniforms.uStrength.value = 2.4;
+        }else {
+            materialRef.current.uniforms.fresnelIntensity.value = 0.8;
+            materialRef.current.uniforms.uPositionFrequency.value = 0.1;
+            materialRef.current.uniforms.uStrength.value = 0.1;
+        }
     }, [currentIndex])
 
 
@@ -100,9 +97,11 @@ export default function Bubble () {
     useEffect(() => {
         if (targetIndex === currentIndex) return
 
+        gsap.killTweensOf(meshRef.current.scale)
+
         pendingIndexRef.current = targetIndex
 
-        if (isAnimatingRef.current) return 
+        // if (isAnimatingRef.current) return 
 
         isAnimatingRef.current = true
 
@@ -115,7 +114,7 @@ export default function Bubble () {
 
                 gsap.to(meshRef.current.scale, {
                     x: 1, y: 1, z: 1,
-                    duration: 0.1,
+                    duration: 0.4,
                     ease: 'power2.out',
                     onComplete: () => {
                         isAnimatingRef.current = false
@@ -127,6 +126,18 @@ export default function Bubble () {
                 })
             }
         })
+
+        return () => {
+            if (meshRef.current) {
+                gsap.killTweensOf(meshRef.current.scale)
+
+                gsap.to(meshRef.current.scale, {
+                x: 1, y: 1, z: 1,
+                duration: 0.2,
+                ease: 'power1.out'
+                })
+            }
+        }
     }, [targetIndex])
 
 

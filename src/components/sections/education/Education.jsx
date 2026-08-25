@@ -1,10 +1,11 @@
-import content from '@/data/content.json'
+import { useTheme } from '@/context/ThemeContext';
 import { useRef } from 'react';
 import { useFadeIn } from '@/components/hooks/useFadeIn';
 
 export function Education(){
     const ref = useRef()
     useFadeIn(ref)
+    const { content } = useTheme();
 
     return (
         <section ref={ref}>

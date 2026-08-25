@@ -1,4 +1,4 @@
-import content from '@/data/content.json';
+import { useTheme } from '@/context/ThemeContext';
 
 import { useEffect, useRef, useState } from 'react';
 import { ExternalLinkIcon } from '@/components/ui/icons/ExternalLinkIcon';
@@ -7,11 +7,11 @@ import { useFadeIn } from '@/components/hooks/useFadeIn';
 
 export function Projects(){
 
-
+    const { content } = useTheme();
     const ref = useRef()
     useFadeIn(ref)
 
-    const [selectedVideo, setSelectedVideo] = useState('/videos/ChickBath.webm')
+    const [selectedVideo, setSelectedVideo] = useState('/portfolio/videos/ChickBath.webm')
     const [skills, setSkills] = useState(['Blender', 'Unreal Engine 5', 'Substance Painter', 'ZBrush'])
     const [link, setLink] = useState('https://www.artstation.com/artwork/qJ15nn ')
     const [date, setDate] = useState('2025')
@@ -24,8 +24,6 @@ export function Projects(){
         setSkills(skills)
         setLink(link)
         setDate(date)
-
-        console.log(link, skills)
     }
 
     useEffect(() => {
@@ -33,6 +31,7 @@ export function Projects(){
             videoRef.current.load()
             videoRef.current.play().catch(() => {})
         }
+        console.log(selectedVideo)
     }, [selectedVideo])
     
 
@@ -46,10 +45,10 @@ export function Projects(){
                     {content.projects.categories.map((list, index) => {
                         return (
                             <div key={index} >
-                                <h3 className='md:text-left text-center md:not-first:mt-20 not-first:mt-10 md:mb-20 mb-5 text-primary font-bold text-3xl'>{list.label}</h3>
-                                <ul key={list} className='md:inline-block'>
+                                <h3 className='md:text-left text-center md:mb-10 mb-5 text-primary font-bold text-3xl'>{list.label}</h3>
+                                <ul key={list} className='md:inline-block md:mb-10 mb-5'>
                                     {list.items.map((item, index) => {
-                                        return <li key={index} onMouseEnter={() => handleMouseEnter(item.videoSrc, item.skills, item.link, item.date)} className='md:text-left text-center md:mb-6 mb:3 text-lg transition-all cursor-pointer hover:font-bold hover:text-2xl text-base'>
+                                        return <li key={index} onMouseEnter={() => handleMouseEnter(item.videoSrc, item.skills, item.link, item.date)} className='md:text-left text-center mb-4 md:mb-6 mb:3 text-lg transition-all cursor-pointer hover:font-bold hover:text-2xl text-base'>
                                             {item.label}
                                         </li>
                                     })}
@@ -72,11 +71,11 @@ export function Projects(){
                         <source src={selectedVideo} type="video/webm" />
                     </video>
 
-                    <div className='flex flex-wrap md:flex-nowrap mt-4 md:gap-8 gap-3 justify-center'>
-                        <div className='flex flex-wrap md:flex-nowrap md:gap-4 gap-3 justify-center'>
+                    <div className='flex flex-wrap mt-4 md:gap-8 gap-3 justify-center'>
+                        <div className='flex flex-wrap md:gap-4 gap-3 justify-center'>
                             {skills.map((item, index) => <div key={index} className='tag'>{item}</div>)}
                         </div>
-                        {link && <a href={link} target="_blank" className='md:ml-auto button flex items-center gap-3 whitespace-nowrap'>{content.glossary.ver_mas}<ExternalLinkIcon fill="white" className="text-sm w-5"/></a>}
+                        {link && <a href={link} target="_blank" className=' button flex justify-center items-center gap-3 whitespace-nowrap self-start'>{content.glossary.ver_mas}<ExternalLinkIcon fill="white" className="text-sm w-5"/></a>}
                     </div>
                 </div>
             </div>

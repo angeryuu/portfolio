@@ -92,8 +92,7 @@
     "glossary": {
       "ver_mas": "Ver más",
       "copy_to_clipboard": "Copiar al portapapeles",
-      "copied": "¡Copiado!",
-      "language": "English"
+      "copied": "¡Copiado!"
     }
   },
   "en": {
@@ -189,8 +188,7 @@
     "glossary": {
       "ver_mas": "See more",
       "copy_to_clipboard": "Copy to clipboard",
-      "copied": "Copied!",
-      "language": "Español"
+      "copied": "Copied!"
     }
   }
 }
