@@ -12,7 +12,22 @@
     },
     "about": {
       "sectionTitle": "SOBRE MÍ",
-      "paragraphs": "Me llamo Ángel y vivo en Madrid.\n\nGrado en Diseño y Desarrollo de Videojuegos (URJC) y 6 años de experiencia en desarrollo frontend.\n\nFormación en 3D ampliando conocimientos con mentorías de Odín Fernández.\n\nBusco proyectos de diseño web o modelado 3D, con un perfil inquieto y polivalente centrado en objetivos.\n\nEsta web está desarrollada por mí con React y Three.js, aprovechando la IA como apoyo con criterio técnico.\n\nHobbies: deportes de circo (aro, straps, pole dance), teatro, videojuegos y arte."
+      "name": {
+        "title": "Nombre",
+        "value": "Ángel"
+      },
+      "location": {
+        "title": "Ubicación",
+        "value": "Madrid"
+      },
+      "trajectory": {
+        "title": "Trayectoria y objetivos",
+        "value": "Tengo 6 años de experiencia en el desarrollo Frontend. También me interesa el mundo del modelado 3D para videojuegos y el diseño UI UX. Al final, gracias a mis intereses y mi forma de ser soy un informático que te programa las cosas bonitas y usables 🌟\n\n Busco proyectos de diseño web o modelado 3D, con un perfil inquieto y polivalente centrado en objetivos.\n\nEsta web está desarrollada por mí con React y Three.js. He usado el conocimiento de todos estos años y también he usado Claude como apoyo, pero siempre usando mi criterio técnico."
+      },
+      "hobbies": {
+        "title": "Hobbies",
+        "value": "Deportes aéreos (pole, straps, aro, telas...), teatro, videojuegos, arte en general."
+      }
     },
     "experience": {
       "sectionTitle": "EXPERIENCIA",
@@ -67,14 +82,14 @@
         {
           "label": "WEB",
           "items": [
-            { "label": "Portfolio", "date": "2026", "videoSrc": "/portfolio/videos/Portfolio.webm", "skills": ["React", "ThreeJS", "Tailwind"] },
-            { "label": "Delectatech", "date": "2024", "videoSrc": "/portfolio/videos/Delectaweb.webm", "skills": ["Wordpress", "CSS", "Javascript"] }
+            { "label": "Portfolio", "date": "2026", "videoSrc": "/videos/Portfolio.webm", "skills": ["React", "ThreeJS", "Tailwind"] },
+            { "label": "Delectatech", "date": "2024", "videoSrc": "/videos/Delectaweb.webm", "skills": ["Wordpress", "CSS", "Javascript"] }
           ]
         },
         {
           "label": "3D",
           "items": [
-            { "label": "Chick Bath Environment", "date": "2025", "videoSrc": "/portfolio/videos/ChickBath.webm", "skills": ["Blender", "Unreal Engine 5", "Substance Painter", "ZBrush"], "link": "https://www.artstation.com/artwork/qJ15nn" }
+            { "label": "Chick Bath Environment", "date": "2025", "videoSrc": "/videos/ChickBath.webm", "skills": ["Blender", "Unreal Engine 5", "Substance Painter", "ZBrush"], "link": "https://www.artstation.com/artwork/qJ15nn" }
           ]
         }
       ]
@@ -101,7 +116,7 @@
       { "name": "About me", "url": "#about" },
       { "name": "Experience", "url": "#experience" },
       { "name": "Projects", "url": "#projects" },
-      { "name": "CV", "url": "/documents/ES_JOSE_ANGEL_CIVICO_MARTOS_CV.pdf" }
+      { "name": "CV", "url": "/documents/EN_JOSE_ANGEL_CIVICO_MARTOS_CV.pdf" }
     ],
     "hero": {
       "title": "ÁNGEL C. MARTOS",
@@ -109,7 +124,22 @@
     },
     "about": {
       "sectionTitle": "ABOUT ME",
-      "paragraphs": "My name is Ángel and I live in Madrid.\n\nDegree in Video Game Design and Development (URJC) and 6 years of experience in frontend development.\n\n3D training, further developed through mentorships with Odín Fernández.\n\nI'm looking for web design or 3D modeling projects, with a restless, versatile, goal-driven profile.\n\nThis site was built by me with React and Three.js, using AI as a technically-informed aid.\n\nHobbies: circus arts (aerial hoop, straps, pole dance), theatre, video games and art."
+      "name": {
+        "title": "Name",
+        "value": "Ángel"
+      },
+      "location": {
+        "title": "Location",
+        "value": "Madrid"
+      },
+      "trajectory": {
+        "title": "Background and goals",
+        "value": "I have 6 years of experience in Frontend development. I am also interested in the world of 3D modeling for video games and UI/UX design. In the end, thanks to my interests and my personality, I'm a developer who builds pretty and usable things for you 🌟\n\nI am looking for web design or 3D modeling projects, with a versatile, naturally curious, and goal-oriented mindset.\n\nThis website was developed by me using React and Three.js. I used the knowledge gained over all these years, along with Claude for support, while always relying on my technical judgment."
+      },
+      "hobbies": {
+        "title": "Hobbies",
+        "value": "Aerial sports (pole, straps, hoop, silks...), theater, video games, art in general."
+      }
     },
     "experience": {
       "sectionTitle": "EXPERIENCE",
@@ -164,14 +194,14 @@
         {
           "label": "WEB",
           "items": [
-            { "label": "Portfolio", "date": "2026", "videoSrc": "/portfolio/videos/Portfolio.webm", "skills": ["React", "ThreeJS", "Tailwind"] },
-            { "label": "Delectatech", "date": "2024", "videoSrc": "/portfolio/videos/Delectaweb.webm", "skills": ["Wordpress", "CSS", "Javascript"] }
+            { "label": "Portfolio", "date": "2026", "videoSrc": "/videos/Portfolio.webm", "skills": ["React", "ThreeJS", "Tailwind"] },
+            { "label": "Delectatech", "date": "2024", "videoSrc": "/videos/Delectaweb.webm", "skills": ["Wordpress", "CSS", "Javascript"] }
           ]
         },
         {
           "label": "3D",
           "items": [
-            { "label": "Chick Bath Environment", "date": "2025", "videoSrc": "/portfolio/videos/ChickBath.webm", "skills": ["Blender", "Unreal Engine 5", "Substance Painter", "ZBrush"], "link": "https://www.artstation.com/artwork/qJ15nn" }
+            { "label": "Chick Bath Environment", "date": "2025", "videoSrc": "/videos/ChickBath.webm", "skills": ["Blender", "Unreal Engine 5", "Substance Painter", "ZBrush"], "link": "https://www.artstation.com/artwork/qJ15nn" }
           ]
         }
       ]
@@ -182,7 +212,7 @@
       "links": [
         { "name": "Linkedin", "url": "https://www.linkedin.com/in/jos%C3%A9-%C3%A1ngel-c%C3%ADvico-martos/" },
         { "name": "angelcmartos@gmail.com", "target": "", "url": "mailto:angelcmartos@gmail.com" },
-        { "name": "CV", "url": "/documents/ES_JOSE_ANGEL_CIVICO_MARTOS_CV.pdf" }
+        { "name": "CV", "url": "/documents/EN_JOSE_ANGEL_CIVICO_MARTOS_CV.pdf" }
       ]
     },
     "copyright": "José Ángel Cívico Martos. All rights reserved.",

@@ -11,7 +11,7 @@ export function Projects(){
     const ref = useRef()
     useFadeIn(ref)
 
-    const [selectedVideo, setSelectedVideo] = useState('/portfolio/videos/ChickBath.webm')
+    const [selectedVideo, setSelectedVideo] = useState('/videos/ChickBath.webm')
     const [skills, setSkills] = useState(['Blender', 'Unreal Engine 5', 'Substance Painter', 'ZBrush'])
     const [link, setLink] = useState('https://www.artstation.com/artwork/qJ15nn ')
     const [date, setDate] = useState('2025')
