@@ -20,7 +20,7 @@ import * as THREE from 'three'
 
 export default function Bubble () {
 
-    const { scene, camera, gl } = useThree()
+    const { scene, camera, gl, size } = useThree()
     const fbo = useFBO(4096, 2048, {
         type: THREE.UnsignedByteType
     })
@@ -32,7 +32,6 @@ export default function Bubble () {
     const meshRef = useRef()
     const materialRef = useRef()
     const pendingIndexRef = useRef(null)
-
 
 
     const controls = useControls(
@@ -188,7 +187,7 @@ export default function Bubble () {
     return( 
     <>      
             
-            <mesh geometry={geometry} ref={meshRef} >
+            <mesh geometry={geometry} ref={meshRef} position={[0, size.width < 776 ? 0 : 5, 0]}>
                 
                 
                 <CustomShaderMaterial

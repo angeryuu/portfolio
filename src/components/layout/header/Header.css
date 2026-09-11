@@ -1,0 +1,118 @@
+@import "tailwindcss";
+@import "@/index.css";
+
+/* --- BOTÓN HAMBURGUESA --- */
+.burger{
+    display: none; /* solo visible en móvil */
+    position: fixed;
+    top: 1rem;
+    left: 1.5rem;
+    z-index: 3;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 28px;
+    height: 20px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+.burger span{
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: currentColor;
+    border-radius: 2px;
+    transition: transform .3s, opacity .3s;
+}
+
+.burger.open span:nth-child(1){
+    transform: translateY(9px) rotate(45deg);
+}
+.burger.open span:nth-child(2){
+    opacity: 0;
+}
+.burger.open span:nth-child(3){
+    transform: translateY(-9px) rotate(-45deg);
+}
+
+/* --- NAV DESKTOP (tu comportamiento actual) --- */
+.header .nav{
+    display: flex;
+    justify-content: center;
+    gap: 8rem;
+    list-style: none;
+    transition: all .5s;
+    position: fixed;
+    left: 50%;
+    transform: translate(-50%, 580px);
+    width: 100%;
+    padding: 20px 0;
+    z-index: 1;
+    background-color: transparent;
+}
+
+.header .nav .link a:hover {
+    transition: all .5s;
+    font-size: 20px;
+}
+
+.nav.scrolled {
+    transition: all .5s;
+    transform: translate(-50%, 0) !important;
+    @apply bg-background;
+}
+
+.lang-and-theme{
+    position: fixed;
+    top: 1rem;
+    right: 3rem;
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+    z-index: 2;
+    transition: transform .5s;
+}
+
+.lang-and-theme.scrolled{
+    transform: translateY(calc(100vh - 2rem - 100%));
+}
+
+
+@media (max-width: 768px) {
+
+    .burger{
+        display: flex;
+    }
+
+    .header .nav{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 2.5rem;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100vh;
+        transform: translateX(-100%);
+        transition: transform .4s ease, background-color .5s;
+        z-index: 2;
+        @apply bg-background;
+    }
+
+    .header .nav.menu-open{
+        transform: translateX(0);
+    }
+    
+    .nav.scrolled{
+        transform: translateX(-100%) !important;
+    }
+    .nav.scrolled.menu-open{
+        transform: translateX(0) !important;
+    }
+
+    .lang-and-theme{
+        right: 1.5rem;
+    }
+}

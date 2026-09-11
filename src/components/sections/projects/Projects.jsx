@@ -39,6 +39,12 @@ export function Projects(){
         <section ref={ref} id="projects">
             <h2 className='title'>{content.projects.sectionTitle}</h2>
 
+
+            <div className='mb-20 flex flex-col items-center'>
+                <h3 className="text-2xl text-primary text-center font-bold mb-2">{content.projects.warning}</h3>
+                <p className="whitespace-pre-line text-center text-sm w-[80%]">{content.projects.warning_message}</p>
+            </div>
+
             <div className='flex flex-col md:flex-row'>
                 <div className='md:w-1/3'>
 
