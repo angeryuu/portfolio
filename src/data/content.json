@@ -78,6 +78,8 @@
     },
     "projects": {
       "sectionTitle": "PROYECTOS",
+      "warning": "¡Aviso!",
+      "warning_message": "Tengo  experiencia trabajando para grandes asociaciones y bancos, y por lo tanto, por confidencialidad no dispongo de acceso para mostrar muchos de los proyectos en los que he trabajado. No obstante, muestro mis proyectos personales, que poco a poco irán creciendo y donde reflejaré todo lo aprendido.",
       "categories": [
         {
           "label": "WEB",
@@ -190,6 +192,8 @@
     },
     "projects": {
       "sectionTitle": "PROJECTS",
+      "warning": "Notice!",
+      "warning_message": "I have experience working with major associations and banks. Due to confidentiality agreements, I cannot showcase many of the corporate projects I have been involved in. However, you can explore my personal projects here, which will continue to grow and reflect everything I have learned.",
       "categories": [
         {
           "label": "WEB",
